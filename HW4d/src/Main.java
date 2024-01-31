@@ -40,7 +40,7 @@ public class Main {
 
         System.out.println(ANSI_GREEN + "#4.3 Найдите самую большую цифру числа, введенного с клавиатуры, а также ее индекс" + ANSI_RESET);
         randomNumber = (int) (Math.random() * 999999); //рандом вместо ручного ввода
-        System.out.printf("%30s", "Введённое число: "); //форматированный вывод чтобы в консоли числа были друг над другом
+        System.out.printf("%30s",  "Введённое число: "); //форматированный вывод чтобы в консоли числа были друг над другом
         System.out.println(randomNumber);
         int max = 0;
         int index = 0;
@@ -58,13 +58,15 @@ public class Main {
 
         System.out.println(ANSI_GREEN + "#4.4 Задача про суеверия армий Японии и Германии" + ANSI_RESET);
         int counter = 0;
-        for (int i = 1; i < 100000; i++) {
-            if (i % 10 == 4) {
-                counter += 1;
-                System.out.println(i);
-            } else if (i % 100 == 13) {
-                counter += 1;
-                System.out.println(i);
+        for (int i = 1; i <= 99999; i++) {
+            for (int j = 1; j <= 1000; j *= 10) {
+                if (i / j % 10 == 4 || (i / j % 100 == 13)) {
+                    counter += 1;
+//                    System.out.printf("%05d", i);
+//                    System.out.println();
+                    break;
+                }
+
             }
 //                i /= 10;
         }
