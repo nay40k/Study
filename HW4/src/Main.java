@@ -59,14 +59,15 @@ public class Main {
 
         System.out.println(ANSI_GREEN + "#4.4 Задача про суеверия армий Японии и Германии" + ANSI_RESET);
         int counter = 0;
-        for (int i = 1; i < 100000; i++) {
+        for (int i = 1; i < 999; i++) {
             if (i % 10 == 4) {
                 counter += 1;
                 System.out.println(i);
-            } else if (i % 100 == 13) {
+            } else if ((i % 100) == 13) {
                 counter += 1;
                 System.out.println(i);
             }
+
 //                i /= 10;
         }
         System.out.println();
