@@ -29,7 +29,7 @@ public class Main {
         String weeksString = "";
         if (outputWeeks != 0) {
             switch (outputWeeks % 10) {
-                case 1 -> weeksString = " неделя ;
+                case 1 -> weeksString = " неделя ";
                 case 2, 3, 4 -> weeksString = " недели ";
                 default -> weeksString = " недель ";
             }
