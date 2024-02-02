@@ -116,9 +116,44 @@ public class Main {
         System.out.println("Придётся перепечатать " + tagCounter + " табличек");
         System.out.println();
 
+
+
+
         System.out.println(ANSI_GREEN + "#4.7 Для введенного целого числа определить является ли это число простым" + ANSI_RESET);
+        System.out.println();
         int primeNumberOrNot = (int) (Math.random() * 99 + 1);
         System.out.println("Сгенерированное целое число: " + primeNumberOrNot);
+        //пока пропустим, хер пойми как делать в плане математики
 
+        System.out.println(ANSI_GREEN + "#4.8 Задача про зеркальное время на электронных часах" + ANSI_RESET);
+        //для начала нам нужно перевернуть число
+        int testNum = 10;
+        int result = 0;
+        while (testNum > 0) {
+            result += testNum % 10;
+            testNum /= 10;
+            if (testNum != 0) {
+                result *= 10;
+            }
+        }
+        System.out.println(result);
+
+        for (int i = 0; i < 24; i++) {
+            for (int j = 0; j < 60; j++) {
+                int reverseMinutes = 0;
+                while (j > 0) {
+                    reverseMinutes += j % 10;
+                    j /= 10;
+                    if (j != 0) {
+                        reverseMinutes *= 10;
+                    }
+                }
+                if (reverseMinutes == i) {
+                    System.out.println("бипки");
+                    break;
+                }
+            }
+
+        }
     }
 }
