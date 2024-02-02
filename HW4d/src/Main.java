@@ -3,7 +3,7 @@ public class Main {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_GREEN = "\u001B[32m";
-//    public static final String ANSI_RED = "\u001B[31m";
+
 
     public static void main(String[] args) {
         System.out.println(ANSI_YELLOW + "=========================================================================================");
@@ -21,7 +21,7 @@ public class Main {
         System.out.println(ANSI_GREEN + "#4.2 Найдите сумму и произведение цифр числа, введенного с клавиатуры" + ANSI_RESET);
         int randomNumber = (int) (Math.random() * 999); //рандом вместо ручного ввода
         int tempRandomNumberSum = randomNumber;
-        int tempRandomNumberMult = randomNumber;
+        int tempRandomNumberProduct = randomNumber;
         System.out.printf("%30s", "Число: ");
         System.out.println(tempRandomNumberSum);
         int sumOfTheDigitsOfTheNumber = 0;
@@ -32,9 +32,9 @@ public class Main {
         }
         System.out.printf("%30s", "Сумма цифр числа: ");
         System.out.println(sumOfTheDigitsOfTheNumber);
-        while (tempRandomNumberMult > 0) {
-            multiplyingTheDigitsOfTheNumber *= (tempRandomNumberMult % 10);
-            tempRandomNumberMult /= 10;
+        while (tempRandomNumberProduct > 0) {
+            multiplyingTheDigitsOfTheNumber *= (tempRandomNumberProduct % 10);
+            tempRandomNumberProduct /= 10;
         }
         System.out.printf("%30s", "Произведение цифр числа: ");
         System.out.println(multiplyingTheDigitsOfTheNumber);
@@ -65,8 +65,6 @@ public class Main {
             for (int j = 1; j <= 1000; j *= 10) {
                 if (i / j % 10 == 4 || (i / j % 100 == 13)) {
                     counter++;
-//                    System.out.printf("%05d", i);
-//                    System.out.println();
                     break;
                 }
             }
@@ -107,7 +105,6 @@ public class Main {
         for (int i = 1; i <= 50000; i++) {
             for (int j = 1; j <= 10000; j *= 10) {
                 if (i / j % 10 == 2) {
-//                    System.out.println(i);
                     tagCounter++;
                     break;
                 }
@@ -117,43 +114,33 @@ public class Main {
         System.out.println();
 
 
-
-
         System.out.println(ANSI_GREEN + "#4.7 Для введенного целого числа определить является ли это число простым" + ANSI_RESET);
-        System.out.println();
         int primeNumberOrNot = (int) (Math.random() * 99 + 1);
         System.out.println("Сгенерированное целое число: " + primeNumberOrNot);
-        //пока пропустим, хер пойми как делать в плане математики
+        boolean notPrime = false;
+        for (int i = 2; i < primeNumberOrNot; i++) {
+            if (primeNumberOrNot % i == 0) {
+                notPrime = true;
+                break;
+            }
+        }
+        if (notPrime) {
+            System.out.println("Число не простое");
+        } else {
+            System.out.println("Число простое");
+        }
+        System.out.println();
+
 
         System.out.println(ANSI_GREEN + "#4.8 Задача про зеркальное время на электронных часах" + ANSI_RESET);
-        //для начала нам нужно перевернуть число
-        int testNum = 10;
-        int result = 0;
-        while (testNum > 0) {
-            result += testNum % 10;
-            testNum /= 10;
-            if (testNum != 0) {
-                result *= 10;
-            }
-        }
-        System.out.println(result);
-
-        for (int i = 0; i < 24; i++) {
-            for (int j = 0; j < 60; j++) {
-                int reverseMinutes = 0;
-                while (j > 0) {
-                    reverseMinutes += j % 10;
-                    j /= 10;
-                    if (j != 0) {
-                        reverseMinutes *= 10;
-                    }
-                }
-                if (reverseMinutes == i) {
-                    System.out.println("бипки");
-                    break;
+        int matchCounter = 0;
+        for (int hours = 0; hours <= 23; hours++) {
+            for (int minutes = 0; minutes <= 59; minutes++) {
+                if (hours / 10 % 10 == minutes % 10 && hours % 10 == minutes / 10 % 10) {
+                    matchCounter++;
                 }
             }
-
         }
+        System.out.println("Всего " + matchCounter + " совпадений");
     }
 }
