@@ -98,29 +98,59 @@ public class Main {
                 }
             }
         }
-        System.out.println("Длина нового массива: " + newArrayLength);
-        System.out.print("Новый массив: ");
-        int[] newArray = new int[newArrayLength];
+//        int[] newArray = new int[newArrayLength];
 
-////        newArray[0] = oldArray[0];
-//        for (int i = 1; i < newArray.length; i++) {
-//            newArray[0] = oldArray[0];
-//            for (int j = 1; j < oldArray.length; ) {
-//                for (int k = 0; k < oldArray.length; k++) {
-//                    if (oldArray[j] == newArray[i - k]) {
-//                        j++;
-//                        break;
-//                    } else {
-//                        newArray[i] = oldArray[j];
-//                    }
-//                }
-//
-//            }
-//
-//        }
+        int newArrayLength2 = oldArray.length;
+        for (int i = 0; i < newArrayLength2; i++) {
+            for (int j = i + 1; j < newArrayLength2; j++) {
+                if (oldArray[i] == oldArray[j]) {
+                    oldArray[j] = oldArray[newArrayLength2 - 1];
+                    newArrayLength2--;
+                    j--;
+                }
+            }
+        }
+        System.out.println("Длина нового массива: " + newArrayLength2);
 
+        System.out.println("Преобразованный массив: ");
+        int[] newArray = Arrays.copyOf(oldArray, newArrayLength2);
+
+        System.out.println("Новый массив: ");
+        System.out.println(Arrays.toString(oldArray));
         System.out.println(Arrays.toString(newArray));
 
+        removeDuplicates(oldArray);
 
+
+    }
+
+    private static void removeDuplicates(int[] arrayWithDuplicates) {
+        System.out.println("==========================================");
+        System.out.println("Массив с дубликатами: ");
+
+        for (int arrayWithDuplicate : arrayWithDuplicates) {
+            System.out.print(arrayWithDuplicate + "\t");
+        }
+        int noOfUniqueElements = arrayWithDuplicates.length;
+
+        for (int i = 0; i < noOfUniqueElements; i++) {
+            for (int j = i + 1; j < noOfUniqueElements; j++) {
+
+                if (arrayWithDuplicates[i] == arrayWithDuplicates[j]) {
+                    arrayWithDuplicates[j] = arrayWithDuplicates[noOfUniqueElements - 1];
+                    noOfUniqueElements--;
+                    j--;
+                }
+            }
+        }
+
+        int[] arrayWithoutDuplicates = Arrays.copyOf(arrayWithDuplicates, noOfUniqueElements);
+        System.out.println();
+        System.out.println("Массив без дубликатов: ");
+        for (int arrayWithoutDuplicate : arrayWithoutDuplicates) {
+            System.out.print(arrayWithoutDuplicate + "\t");
+        }
+        System.out.println();
+        System.out.println("==========================================");
     }
 }
