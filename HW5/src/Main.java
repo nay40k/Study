@@ -1,6 +1,5 @@
-
 import java.util.Arrays;
-import java.util.List;
+
 
 public class Main {
 
@@ -89,15 +88,15 @@ public class Main {
         System.out.print("]");
         System.out.println();
 
-        int newArrayLength = oldArray.length;
-        for (int i = 0; i < oldArray.length; i++) {
-            for (int j = i + 1; j < oldArray.length; j++) {
-                if (oldArray[i] == oldArray[j]) {
-                    newArrayLength--;
-                    break;
-                }
-            }
-        }
+//        int newArrayLength = oldArray.length;
+//        for (int i = 0; i < oldArray.length; i++) {
+//            for (int j = i + 1; j < oldArray.length; j++) {
+//                if (oldArray[i] == oldArray[j]) {
+//                    newArrayLength--;
+//                    break;
+//                }
+//            }
+//        }
 //        int[] newArray = new int[newArrayLength];
 
         int newArrayLength2 = oldArray.length;
@@ -113,13 +112,13 @@ public class Main {
         System.out.println("Длина нового массива: " + newArrayLength2);
 
         System.out.println("Преобразованный массив: ");
-        int[] newArray = Arrays.copyOf(oldArray, newArrayLength2);
-
-        System.out.println("Новый массив: ");
         System.out.println(Arrays.toString(oldArray));
+
+        int[] newArray = Arrays.copyOf(oldArray, newArrayLength2);
+        System.out.println("Новый массив: ");
         System.out.println(Arrays.toString(newArray));
 
-        removeDuplicates(oldArray);
+        //removeDuplicates(oldArray);
 
 
     }
