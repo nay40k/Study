@@ -18,17 +18,17 @@ public class Main {
         // создание, наполнение и вывод исходного массива
         int negativeCounter = 0;
         int positiveCounter = 0;
-        int[] array = new int[10];
+        int[] initialArray = new int[15];
         System.out.print("Исходный массив: [");
-        for (int i = 0; i < array.length; i++) {
-            array[i] = (int) (Math.random() * 20 + 1) - 10;
-            if (array[i] >= 0) {
+        for (int i = 0; i < initialArray.length; i++) {
+            initialArray[i] = (int) (Math.random() * 20 + 1) - 10;
+            if (initialArray[i] >= 0) {
                 positiveCounter++;
             } else {
                 negativeCounter++;
             }
-            System.out.printf("%3s", array[i]);
-            if (i != array.length - 1) {
+            System.out.printf("%3s", initialArray[i]);
+            if (i != initialArray.length - 1) {
                 System.out.print(";");
             }
         }
@@ -39,12 +39,12 @@ public class Main {
         int[] negativeArray = new int[negativeCounter];
         int tempIndexPos = 0;
         int tempIndexNeg = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] >= 0) {
-                positiveArray[tempIndexPos] = array[i];
+        for (int k : initialArray) {
+            if (k >= 0) {
+                positiveArray[tempIndexPos] = k;
                 tempIndexPos++;
-            } else if (array[i] < 0) {
-                negativeArray[tempIndexNeg] = array[i];
+            } else {
+                negativeArray[tempIndexNeg] = k;
                 tempIndexNeg++;
             }
         }
@@ -68,9 +68,9 @@ public class Main {
         System.out.print("], длина " + negativeArray.length);
         System.out.println();
 
-        if (array.length == negativeArray.length + positiveArray.length) {
+        if (initialArray.length == negativeArray.length + positiveArray.length) {
             System.out.println("Сумма длин новых массивов " + positiveArray.length + " и " + negativeArray.length +
-                    " равна длине исходного массива " + array.length);
+                    " равна длине исходного массива " + initialArray.length);
         }
         System.out.println();
 
@@ -79,7 +79,7 @@ public class Main {
         int[] oldArray = new int[10];
         System.out.print("Исходный массив: [");
         for (int i = 0; i < oldArray.length; i++) {
-            oldArray[i] = (int) (Math.random() * 5);
+            oldArray[i] = (int) (Math.random() * 3);
             System.out.printf("%2s", oldArray[i]);
             if (i != oldArray.length - 1) {
                 System.out.print(";");
@@ -88,68 +88,72 @@ public class Main {
         System.out.print("]");
         System.out.println();
 
-//        int newArrayLength = oldArray.length;
-//        for (int i = 0; i < oldArray.length; i++) {
-//            for (int j = i + 1; j < oldArray.length; j++) {
-//                if (oldArray[i] == oldArray[j]) {
-//                    newArrayLength--;
-//                    break;
-//                }
-//            }
-//        }
-//        int[] newArray = new int[newArrayLength];
-
-        int newArrayLength2 = oldArray.length;
-        for (int i = 0; i < newArrayLength2; i++) {
-            for (int j = i + 1; j < newArrayLength2; j++) {
+        int newArrayLength = oldArray.length;
+        for (int i = 0; i < oldArray.length; i++) {
+            for (int j = i + 1; j < newArrayLength; j++) {
                 if (oldArray[i] == oldArray[j]) {
-                    oldArray[j] = oldArray[newArrayLength2 - 1];
-                    newArrayLength2--;
+                    oldArray[j] = oldArray[newArrayLength - 1];
+                    newArrayLength--;
                     j--;
                 }
             }
         }
-        System.out.println("Длина нового массива: " + newArrayLength2);
-
-        System.out.println("Преобразованный массив: ");
-        System.out.println(Arrays.toString(oldArray));
-
-        int[] newArray = Arrays.copyOf(oldArray, newArrayLength2);
-        System.out.println("Новый массив: ");
-        System.out.println(Arrays.toString(newArray));
-
-        //removeDuplicates(oldArray);
-
-
-    }
-
-    private static void removeDuplicates(int[] arrayWithDuplicates) {
-        System.out.println("==========================================");
-        System.out.println("Массив с дубликатами: ");
-
-        for (int arrayWithDuplicate : arrayWithDuplicates) {
-            System.out.print(arrayWithDuplicate + "\t");
+        System.out.println("Длина нового массива: " + newArrayLength);
+        System.out.print("Новый массив: [");
+        int[] newArray = new int[newArrayLength];
+        for (int i = 0; i < newArray.length; i++) {
+            newArray[i] = oldArray[i];
+            System.out.printf("%2s", newArray[i]);
+            if (i != newArray.length - 1) {
+                System.out.print(";");
+            }
         }
-        int noOfUniqueElements = arrayWithDuplicates.length;
+        System.out.println("]");
+        System.out.println();
 
-        for (int i = 0; i < noOfUniqueElements; i++) {
-            for (int j = i + 1; j < noOfUniqueElements; j++) {
+/*
+        Выполнить слияние 2 упорядоченных массивов в один упорядоченный массив.
+        Исходные массивы сортировать не нужно, они даны упорядоченными.
+        Итоговый массив должен быть упорядоченным сразу после слияния, без дополнительных сортировок.
+*/
 
-                if (arrayWithDuplicates[i] == arrayWithDuplicates[j]) {
-                    arrayWithDuplicates[j] = arrayWithDuplicates[noOfUniqueElements - 1];
-                    noOfUniqueElements--;
-                    j--;
-                }
+        System.out.println(ANSI_GREEN + "#5.3 Выполнить слияние 2 упорядоченных массивов в один упорядоченный массив" + ANSI_RESET);
+
+        int[] firstSortedArray = new int[7];
+        int[] secondSortedArray = new int[7];
+        int arrayFiller = 0;
+        for (int i = 0; i < firstSortedArray.length; i++) {
+            firstSortedArray[i] = arrayFiller + (int) (Math.random() * 10);
+            arrayFiller = firstSortedArray[i];
+        }
+        arrayFiller = 0;
+        for (int i = 0; i < secondSortedArray.length; i++) {
+            secondSortedArray[i] = arrayFiller + (int) (Math.random() * 10);
+            arrayFiller = secondSortedArray[i];
+        }
+        System.out.println(Arrays.toString(firstSortedArray));
+        System.out.println(Arrays.toString(secondSortedArray));
+
+        int[] mergedSortedArray = new int[firstSortedArray.length + secondSortedArray.length];
+
+        int i = 0;
+        int j = 0;
+        for (int k = 0; k < mergedSortedArray.length; k++) {
+            if (i > firstSortedArray.length - 1) {
+                mergedSortedArray[k] = secondSortedArray[j];
+                j++;
+            } else if (j > secondSortedArray.length - 1) {
+                mergedSortedArray[k] = firstSortedArray[i];
+                i++;
+            } else if (firstSortedArray[i] < secondSortedArray[j]) {
+                mergedSortedArray[k] = firstSortedArray[i];
+                i++;
+            } else {
+                mergedSortedArray[k] = secondSortedArray[j];
+                j++;
             }
         }
 
-        int[] arrayWithoutDuplicates = Arrays.copyOf(arrayWithDuplicates, noOfUniqueElements);
-        System.out.println();
-        System.out.println("Массив без дубликатов: ");
-        for (int arrayWithoutDuplicate : arrayWithoutDuplicates) {
-            System.out.print(arrayWithoutDuplicate + "\t");
-        }
-        System.out.println();
-        System.out.println("==========================================");
+        System.out.println(Arrays.toString(mergedSortedArray));
     }
 }
