@@ -18,17 +18,17 @@ public class Main {
         // создание, наполнение и вывод исходного массива
         int negativeCounter = 0;
         int positiveCounter = 0;
-        int[] array = new int[10];
+        int[] initialArray = new int[15];
         System.out.print("Исходный массив: [");
-        for (int i = 0; i < array.length; i++) {
-            array[i] = (int) (Math.random() * 20 + 1) - 10;
-            if (array[i] >= 0) {
+        for (int i = 0; i < initialArray.length; i++) {
+            initialArray[i] = (int) (Math.random() * 20 + 1) - 10;
+            if (initialArray[i] >= 0) {
                 positiveCounter++;
             } else {
                 negativeCounter++;
             }
-            System.out.printf("%3s", array[i]);
-            if (i != array.length - 1) {
+            System.out.printf("%3s", initialArray[i]);
+            if (i != initialArray.length - 1) {
                 System.out.print(";");
             }
         }
@@ -39,12 +39,12 @@ public class Main {
         int[] negativeArray = new int[negativeCounter];
         int tempIndexPos = 0;
         int tempIndexNeg = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] >= 0) {
-                positiveArray[tempIndexPos] = array[i];
+        for (int k : initialArray) {
+            if (k >= 0) {
+                positiveArray[tempIndexPos] = k;
                 tempIndexPos++;
-            } else if (array[i] < 0) {
-                negativeArray[tempIndexNeg] = array[i];
+            } else {
+                negativeArray[tempIndexNeg] = k;
                 tempIndexNeg++;
             }
         }
@@ -68,15 +68,15 @@ public class Main {
         System.out.print("], длина " + negativeArray.length);
         System.out.println();
 
-        if (array.length == negativeArray.length + positiveArray.length) {
+        if (initialArray.length == negativeArray.length + positiveArray.length) {
             System.out.println("Сумма длин новых массивов " + positiveArray.length + " и " + negativeArray.length +
-                    " равна длине исходного массива " + array.length);
+                    " равна длине исходного массива " + initialArray.length);
         }
         System.out.println();
 
         System.out.println(ANSI_GREEN + "#5.2 Исключить одинаковые элементы массива" + ANSI_RESET);
 
-        int[] oldArray = new int[15];
+        int[] oldArray = new int[10];
         System.out.print("Исходный массив: [");
         for (int i = 0; i < oldArray.length; i++) {
             oldArray[i] = (int) (Math.random() * 3);
@@ -123,30 +123,37 @@ public class Main {
         int[] secondSortedArray = new int[7];
         int arrayFiller = 0;
         for (int i = 0; i < firstSortedArray.length; i++) {
-            firstSortedArray[i] = arrayFiller + (int) (Math.random() * 3) + 1;
+            firstSortedArray[i] = arrayFiller + (int) (Math.random() * 10);
             arrayFiller = firstSortedArray[i];
         }
         arrayFiller = 0;
-        for (int i = 0; i < firstSortedArray.length; i++) {
-            secondSortedArray[i] = arrayFiller + (int) (Math.random() * 6) -3;
+        for (int i = 0; i < secondSortedArray.length; i++) {
+            secondSortedArray[i] = arrayFiller + (int) (Math.random() * 10);
             arrayFiller = secondSortedArray[i];
         }
         System.out.println(Arrays.toString(firstSortedArray));
         System.out.println(Arrays.toString(secondSortedArray));
-        int[] finalSortedArray = new int[firstSortedArray.length + secondSortedArray.length];
-        int tempIndex = 0;
-        int tempMin = (firstSortedArray[0] < secondSortedArray[0]) ? (tempMin = firstSortedArray[0]) : (tempMin = secondSortedArray[0]);
-        System.out.println(tempMin);
-        for (int i = 0; i < firstSortedArray.length; i++) {
-            if (firstSortedArray[i] <= tempMin) {
-                finalSortedArray[i] = tempMin;
-                tempIndex++;
-            } else if (secondSortedArray[i] <= tempMin) {
-                finalSortedArray[i] = tempMin;
-                tempIndex++;
+
+        int[] mergedSortedArray = new int[firstSortedArray.length + secondSortedArray.length];
+
+        int i = 0;
+        int j = 0;
+        for (int k = 0; k < mergedSortedArray.length; k++) {
+            if (i > firstSortedArray.length - 1) {
+                mergedSortedArray[k] = secondSortedArray[j];
+                j++;
+            } else if (j > secondSortedArray.length - 1) {
+                mergedSortedArray[k] = firstSortedArray[i];
+                i++;
+            } else if (firstSortedArray[i] < secondSortedArray[j]) {
+                mergedSortedArray[k] = firstSortedArray[i];
+                i++;
+            } else {
+                mergedSortedArray[k] = secondSortedArray[j];
+                j++;
             }
         }
 
-        System.out.println(Arrays.toString(finalSortedArray));
+        System.out.println(Arrays.toString(mergedSortedArray));
     }
 }
