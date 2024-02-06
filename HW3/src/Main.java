@@ -91,12 +91,12 @@ public class Main {
         int year = 2000;
         String nextDate = "";
         int daysInMonth = 0;
-        boolean leapYear = false;
+        boolean isLeapYear = false;
         if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
-            leapYear = true;
+            isLeapYear = true;
         }
         int temp = 0;
-        if (leapYear) {
+        if (isLeapYear) {
             temp = 29;
         } else {
             temp = 28;
@@ -106,7 +106,7 @@ public class Main {
             case 2 -> daysInMonth = (temp);
             default -> daysInMonth = 30;
         }
-        if (day > daysInMonth || month > 12) {
+        if (day > daysInMonth || month > 12 || month < 1) {
             System.out.println(ANSI_RED + "Введённые числа некорректны" + ANSI_RESET);
         } else if (day < daysInMonth) {
             nextDate = (day + 1) + " " + month + " " + year;
@@ -118,6 +118,7 @@ public class Main {
             nextDate = "1 " + "1 " + (year + 1);
             System.out.println("Результат: " + nextDate);
         }
+
 
         System.out.println(ANSI_GREEN + "#3.3 Оптимизация тайм-менеджмента от инженера Петрова" + ANSI_RESET);
         int n = (int) (Math.random() * 28800 + 1);
