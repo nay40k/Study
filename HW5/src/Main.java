@@ -111,12 +111,6 @@ public class Main {
         System.out.println("]");
         System.out.println();
 
-/*
-        Выполнить слияние 2 упорядоченных массивов в один упорядоченный массив.
-        Исходные массивы сортировать не нужно, они даны упорядоченными.
-        Итоговый массив должен быть упорядоченным сразу после слияния, без дополнительных сортировок.
-*/
-
         System.out.println(ANSI_GREEN + "#5.3 Выполнить слияние 2 упорядоченных массивов в один упорядоченный массив" + ANSI_RESET);
 
         int[] firstSortedArray = new int[7];
@@ -136,24 +130,57 @@ public class Main {
 
         int[] mergedSortedArray = new int[firstSortedArray.length + secondSortedArray.length];
 
-        int i = 0;
-        int j = 0;
+        int firstIndex = 0;
+        int secondIndex = 0;
         for (int k = 0; k < mergedSortedArray.length; k++) {
-            if (i > firstSortedArray.length - 1) {
-                mergedSortedArray[k] = secondSortedArray[j];
-                j++;
-            } else if (j > secondSortedArray.length - 1) {
-                mergedSortedArray[k] = firstSortedArray[i];
-                i++;
-            } else if (firstSortedArray[i] < secondSortedArray[j]) {
-                mergedSortedArray[k] = firstSortedArray[i];
-                i++;
+            if (firstIndex > firstSortedArray.length - 1) {
+                mergedSortedArray[k] = secondSortedArray[secondIndex];
+                secondIndex++;
+            } else if (secondIndex > secondSortedArray.length - 1) {
+                mergedSortedArray[k] = firstSortedArray[firstIndex];
+                firstIndex++;
+            } else if (firstSortedArray[firstIndex] < secondSortedArray[secondIndex]) {
+                mergedSortedArray[k] = firstSortedArray[firstIndex];
+                firstIndex++;
             } else {
-                mergedSortedArray[k] = secondSortedArray[j];
-                j++;
+                mergedSortedArray[k] = secondSortedArray[secondIndex];
+                secondIndex++;
             }
         }
 
         System.out.println(Arrays.toString(mergedSortedArray));
+        System.out.println();
+
+        System.out.println(ANSI_GREEN + "##5.5 Сделать транспонирование матрицы (замена строк на столбцы)" + ANSI_RESET);
+
+        int matrixRows = 3;
+        int matrixColumns = 5;
+        int[][] originalMatrix = new int[matrixRows][matrixColumns];
+
+        int filler = 1;
+        for (int i = 0; i < originalMatrix.length; i++) {
+            System.out.print("│");
+            for (int j = 0; j < originalMatrix[i].length; j++) {
+                originalMatrix[i][j] = filler;
+                filler++; // использовал заполнение матрицы числами по возрастанию вместо ГСЧ для наглядности
+                System.out.printf("%3s", originalMatrix[i][j]);
+            }
+            System.out.print("│");
+            System.out.println();
+        }
+        System.out.println("Магия транспонирования и...");
+
+        int[][] flipMatrix = new int[matrixColumns][matrixRows];
+        for (int i = 0; i < flipMatrix.length; i++) {
+            System.out.print("│");
+            for (int j = 0; j < flipMatrix[i].length; j++) {
+                flipMatrix[i][j] = originalMatrix[j][i];
+                System.out.printf("%3s", flipMatrix[i][j]);
+            }
+            System.out.print("│");
+            System.out.println();
+        }
+        System.out.println();
+
     }
 }
