@@ -52,13 +52,13 @@ public class Main {
         // 4 5 6 -> 6 5 4
         // 7 8 9    3 2 1
 
-        int[][] suddenArray = new int[3][3];
+        int[][] originalArray = new int[3][3];
         int filler = 1;
-        for (int i = 0; i < suddenArray.length; i++) {
-            for (int j = 0; j < suddenArray[i].length; j++) {
-                suddenArray[i][j] = filler;
+        for (int i = 0; i < originalArray.length; i++) {
+            for (int j = 0; j < originalArray[i].length; j++) {
+                originalArray[i][j] = filler;
                 filler++;
-                System.out.printf("%2s", suddenArray[i][j]);
+                System.out.printf("%2s", originalArray[i][j]);
             }
             System.out.println();
         }
@@ -66,7 +66,7 @@ public class Main {
         int[][] flipArray = new int[3][3];
         for (int i = 0; i < flipArray.length; i++) {
             for (int j = 0; j < flipArray[i].length; j++) {
-                flipArray[i][j] = suddenArray[flipArray.length - 1 - i][flipArray.length - 1 - j];
+                flipArray[i][j] = originalArray[flipArray.length - 1 - i][flipArray.length - 1 - j];
                 System.out.printf("%2s", flipArray[i][j]);
             }
             System.out.println();
