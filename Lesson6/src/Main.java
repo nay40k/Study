@@ -24,8 +24,8 @@ public class Main {
         System.out.println("========================================");
 
 
-//        Перевернуть массив:
-//          1 2 3 4 5 -> 5 4 3 2 1
+        // Перевернуть массив:
+        // 1 2 3 4 5 -> 5 4 3 2 1
 
         int[] flatArray = new int[]{1, 2, 3, 4, 5};
         for (int i = 0; i < flatArray.length; i++) {
@@ -47,10 +47,10 @@ public class Main {
         System.out.println();
         System.out.println("========================================");
 
-//         Перевернуть массив:
-//        1 2 3    9 8 7
-//        4 5 6 -> 6 5 4
-//        7 8 9    3 2 1
+        //  Перевернуть массив:
+        // 1 2 3    9 8 7
+        // 4 5 6 -> 6 5 4
+        // 7 8 9    3 2 1
 
         int[][] suddenArray = new int[3][3];
         int filler = 1;
@@ -75,26 +75,51 @@ public class Main {
         System.out.println();
         System.out.println("========================================");
 
-
-//        задание 4
+        /*
+        4. Пользователь должен указать с клавиатуры чётное положительное число,
+        а программа должна создать массив указанного размера из случайных целых
+        чисел из [-5:5] и вывести его на экран в строку. После этого программа
+        должна определить и сообщить пользопателю о том, сумма модулей какой
+        половины массива больше: левой или правой, либо сообщить, что эти суммы
+        модулей равны. Если пользователь введет неподходящее число, то программа
+        должна требовать повторного ввода до тех пор, пока не будет указано корректное значение.
+         */
 
         int arraySize = 6;
         System.out.println("Пользователь ввёл " + arraySize);
-        int[] roboticArray = new int[arraySize];
-        System.out.print("Массив от робота: [");
-        for (int i = 0; i < roboticArray.length; i++) {
-            roboticArray[i] = (int) (Math.random() * 11) - 5;
-            System.out.printf("%2s", roboticArray[i]);
-            if (i < roboticArray.length - 1) {
-                System.out.print(";");
+        if (arraySize % 2 != 0 || arraySize <= 0) {
+            System.out.println("Ошибка! Укажите с клавиатуры чётное положительное число!");
+        } else {
+
+            int[] roboticArray = new int[arraySize];
+            System.out.print("Массив от робота: [");
+            for (int i = 0; i < roboticArray.length; i++) {
+                roboticArray[i] = (int) (Math.random() * 11) - 5;
+                System.out.printf("%2s", roboticArray[i]);
+                if (i < roboticArray.length - 1) {
+                    System.out.print(";");
+                }
+            }
+            System.out.println("]");
+
+            int leftSum = 0;
+            for (int i = 0; i < roboticArray.length / 2; i++) {
+                leftSum += Math.abs(roboticArray[i]);
+            }
+            int rightSum = 0;
+            for (int i = (roboticArray.length / 2); i < (roboticArray.length); i++) {
+                rightSum += Math.abs(roboticArray[i]);
+            }
+            System.out.println(leftSum);
+            System.out.println(rightSum);
+            if (leftSum > rightSum) {
+                System.out.println("Слева больше");
+            } else if (leftSum < rightSum) {
+                System.out.println("Справа больше");
+            } else {
+                System.out.println("Половинки равны");
             }
         }
-        System.out.print("]");
-        System.out.println();
-        if (roboticArray[])
-
-
-
 
 
     }
