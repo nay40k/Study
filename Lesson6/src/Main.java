@@ -66,8 +66,7 @@ public class Main {
         int[][] flipArray = new int[3][3];
         for (int i = 0; i < flipArray.length; i++) {
             for (int j = 0; j < flipArray[i].length; j++) {
-//                flipArray[i][j] = originalArray[flipArray.length - 1 - i][flipArray.length - 1 - j];
-                flipArray[i][j] = originalArray[j][i];
+                flipArray[i][j] = originalArray[flipArray.length - 1 - i][flipArray.length - 1 - j];
                 System.out.printf("%2s", flipArray[i][j]);
             }
             System.out.println();
