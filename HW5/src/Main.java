@@ -169,7 +169,6 @@ public class Main {
             System.out.println();
         }
         System.out.println("Магия транспонирования и...");
-
         int[][] flipMatrix = new int[matrixColumns][matrixRows];
         for (int i = 0; i < flipMatrix.length; i++) {
             System.out.print("│");
