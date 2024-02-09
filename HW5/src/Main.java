@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 
 public class Main {
 
@@ -13,12 +11,13 @@ public class Main {
         System.out.println(ANSI_YELLOW + "=========================================================================");
         System.out.println("================= Домашнее задание #5 02.02 Массивы =====================");
         System.out.println("=========================================================================" + ANSI_RESET);
+
         System.out.println(ANSI_GREEN + "#5.1 Разложить положительные и отрицательные числа по разным массивам" + ANSI_RESET);
 
-        // создание, наполнение и вывод исходного массива
         int negativeCounter = 0;
         int positiveCounter = 0;
         int[] initialArray = new int[15];
+
         System.out.print("Исходный массив: [");
         for (int i = 0; i < initialArray.length; i++) {
             initialArray[i] = (int) (Math.random() * 20 + 1) - 10;
@@ -32,8 +31,7 @@ public class Main {
                 System.out.print(";");
             }
         }
-        System.out.print("]");
-        System.out.println();
+        System.out.println("]");
 
         int[] positiveArray = new int[positiveCounter];
         int[] negativeArray = new int[negativeCounter];
@@ -55,8 +53,7 @@ public class Main {
                 System.out.print(";");
             }
         }
-        System.out.print("], длина " + positiveArray.length);
-        System.out.println();
+        System.out.println("], длина " + positiveArray.length);
 
         System.out.print("Массив отрицательных чисел: [");
         for (int i = 0; i < negativeArray.length; i++) {
@@ -65,12 +62,10 @@ public class Main {
                 System.out.print(";");
             }
         }
-        System.out.print("], длина " + negativeArray.length);
-        System.out.println();
+        System.out.println("], длина " + negativeArray.length);
 
         if (initialArray.length == negativeArray.length + positiveArray.length) {
-            System.out.println("Сумма длин новых массивов " + positiveArray.length + " и " + negativeArray.length +
-                    " равна длине исходного массива " + initialArray.length);
+            System.out.println("Сумма длин новых массивов " + positiveArray.length + " и " + negativeArray.length + " равна длине исходного массива " + initialArray.length);
         }
         System.out.println();
 
@@ -85,16 +80,15 @@ public class Main {
                 System.out.print(";");
             }
         }
-        System.out.print("]");
-        System.out.println();
+        System.out.println("]");
 
         int newArrayLength = oldArray.length;
         for (int i = 0; i < oldArray.length; i++) {
-            for (int j = i + 1; j < newArrayLength; j++) {
-                if (oldArray[i] == oldArray[j]) {
-                    oldArray[j] = oldArray[newArrayLength - 1];
-                    newArrayLength--;
-                    j--;
+            for (int j = i + 1; j < newArrayLength; j++) {      // поясню:
+                if (oldArray[i] == oldArray[j]) {               // если мы находим совпадение в соседней ячейке
+                    oldArray[j] = oldArray[newArrayLength - 1]; // записываем в эту ячейку значение из последней ячейки
+                    newArrayLength--;                           // из-за появления повторки сокращаем длину нового массива
+                    j--;                                        // заходим на повторную итерацию проверки соседней ячейки
                 }
             }
         }
@@ -111,12 +105,6 @@ public class Main {
         System.out.println("]");
         System.out.println();
 
-/*
-        Выполнить слияние 2 упорядоченных массивов в один упорядоченный массив.
-        Исходные массивы сортировать не нужно, они даны упорядоченными.
-        Итоговый массив должен быть упорядоченным сразу после слияния, без дополнительных сортировок.
-*/
-
         System.out.println(ANSI_GREEN + "#5.3 Выполнить слияние 2 упорядоченных массивов в один упорядоченный массив" + ANSI_RESET);
 
         int[] firstSortedArray = new int[7];
@@ -131,29 +119,153 @@ public class Main {
             secondSortedArray[i] = arrayFiller + (int) (Math.random() * 10);
             arrayFiller = secondSortedArray[i];
         }
-        System.out.println(Arrays.toString(firstSortedArray));
-        System.out.println(Arrays.toString(secondSortedArray));
+        System.out.print("Массив 1: [");
+        for (int i = 0; i < firstSortedArray.length; i++) {
+            System.out.printf("%3s", firstSortedArray[i]);
+            if (i != firstSortedArray.length - 1) {
+                System.out.print(";");
+            }
+        }
+        System.out.println("]");
+        System.out.print("Массив 2: [");
+        for (int i = 0; i < secondSortedArray.length; i++) {
+            System.out.printf("%3s", secondSortedArray[i]);
+            if (i != secondSortedArray.length - 1) {
+                System.out.print(";");
+            }
+        }
+        System.out.println("]");
 
         int[] mergedSortedArray = new int[firstSortedArray.length + secondSortedArray.length];
 
-        int i = 0;
-        int j = 0;
+        int firstIndex = 0;
+        int secondIndex = 0;
         for (int k = 0; k < mergedSortedArray.length; k++) {
-            if (i > firstSortedArray.length - 1) {
-                mergedSortedArray[k] = secondSortedArray[j];
-                j++;
-            } else if (j > secondSortedArray.length - 1) {
-                mergedSortedArray[k] = firstSortedArray[i];
-                i++;
-            } else if (firstSortedArray[i] < secondSortedArray[j]) {
-                mergedSortedArray[k] = firstSortedArray[i];
-                i++;
+            if (firstIndex > firstSortedArray.length - 1) {
+                mergedSortedArray[k] = secondSortedArray[secondIndex];
+                secondIndex++;
+            } else if (secondIndex > secondSortedArray.length - 1) {
+                mergedSortedArray[k] = firstSortedArray[firstIndex];
+                firstIndex++;
+            } else if (firstSortedArray[firstIndex] < secondSortedArray[secondIndex]) {
+                mergedSortedArray[k] = firstSortedArray[firstIndex];
+                firstIndex++;
             } else {
-                mergedSortedArray[k] = secondSortedArray[j];
-                j++;
+                mergedSortedArray[k] = secondSortedArray[secondIndex];
+                secondIndex++;
             }
         }
 
-        System.out.println(Arrays.toString(mergedSortedArray));
+        System.out.print("Итоговый массив: [");
+        for (int i = 0; i < mergedSortedArray.length; i++) {
+            System.out.printf("%3s", mergedSortedArray[i]);
+            if (i != mergedSortedArray.length - 1) {
+                System.out.print(";");
+            }
+        }
+        System.out.println("]");
+        System.out.println();
+
+        System.out.println(ANSI_GREEN + "##5.4 Найти строку матрицы с максимальной суммой элементов" + ANSI_RESET);
+
+        int rows = 5;
+        int columns = 5;
+        int[][] matrix = new int[rows][columns];
+        int maxSum = 0;
+        int maxSumRowIndex = 0;
+
+        for (int i = 0; i < matrix.length; i++) {
+            int rowSum = 0;
+            for (int j = 0; j < matrix[i].length; j++) {
+                matrix[i][j] = (int) (Math.random() * 9);
+                rowSum += matrix[i][j];
+            }
+            if (rowSum > maxSum) {
+                maxSum = rowSum;
+                maxSumRowIndex = i;
+            }
+        }
+        System.out.println("Исходная матрица:");
+        for (int i = 0; i < matrix.length; i++) {
+            System.out.print("│");
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.printf("%3s", matrix[i][j]);
+            }
+            System.out.print("│");
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("Строка с максимальной суммой:");
+        System.out.print(" ");
+        for (int i = 0; i < matrix[maxSumRowIndex].length; i++) {
+            System.out.printf("%3s", matrix[maxSumRowIndex][i]);
+        }
+        System.out.println();
+        System.out.println();
+
+        System.out.println(ANSI_GREEN + "##5.5 Сделать транспонирование матрицы (замена строк на столбцы)" + ANSI_RESET);
+
+        int matrixRows = 3;
+        int matrixColumns = 4;
+        int[][] originalMatrix = new int[matrixRows][matrixColumns];
+
+        int filler = 1;
+        for (int i = 0; i < originalMatrix.length; i++) {
+            System.out.print("│");
+            for (int j = 0; j < originalMatrix[i].length; j++) {
+                originalMatrix[i][j] = filler;
+                filler++; // использовал заполнение матрицы числами по возрастанию вместо ГСЧ для наглядности
+                System.out.printf("%3s", originalMatrix[i][j]);
+            }
+            System.out.print("│");
+            System.out.println();
+        }
+        System.out.println("Магия транспонирования и...");
+        int[][] flipMatrix = new int[matrixColumns][matrixRows];
+        for (int i = 0; i < flipMatrix.length; i++) {
+            System.out.print("│");
+            for (int j = 0; j < flipMatrix[i].length; j++) {
+                flipMatrix[i][j] = originalMatrix[j][i];
+                System.out.printf("%3s", flipMatrix[i][j]);
+            }
+            System.out.print("│");
+            System.out.println();
+        }
+        System.out.println();
+
+        System.out.println(ANSI_GREEN + "##5.6 Создать массив заполнить его случайными элементами, распечатать, перевернуть, и снова распечатать." + ANSI_RESET);
+
+        int size = 5;
+        int[][] arr = new int[size][size];
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print("│");
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] = (int) (Math.random() * 21) - 10;
+                System.out.printf("%3s", arr[i][j]);
+            }
+            System.out.print("│");
+            System.out.println();
+        }
+        System.out.println("\t╬ Вжух! ╬");
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length / 2; j++) {
+                int temp = arr[i][j];
+                arr[i][j] = arr[arr[i].length - 1 - i][arr[i].length - 1 - j];
+                arr[arr[i].length - 1 - i][arr[i].length - 1 - j] = temp;
+            }
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print("│");
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.printf("%3s", arr[i][j]);
+            }
+            System.out.print("│");
+            System.out.println();
+        }
+        System.out.println();
+
     }
 }
