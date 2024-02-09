@@ -1,46 +1,46 @@
 public class Main {
     public static void main(String[] args) {
-        int[] oldArray = new int[10];
+        int[] oldArrayVer2 = new int[10];
         System.out.print("Исходный массив: [");
-        for (int i = 0; i < oldArray.length; i++) {
-            oldArray[i] = (int) (Math.random() * 5);
-            System.out.printf("%2s", oldArray[i]);
-            if (i != oldArray.length - 1) {
+        for (int i = 0; i < oldArrayVer2.length; i++) {
+            oldArrayVer2[i] = (int) (Math.random() * 5);
+            System.out.printf("%2s", oldArrayVer2[i]);
+            if (i != oldArrayVer2.length - 1) {
                 System.out.print(";");
             }
         }
         System.out.println("]");
 
-        int newArrayLength = oldArray.length;
-        for (int i = 0; i < oldArray.length; i++) {
-            for (int j = i + 1; j < oldArray.length; j++) {
-                if (oldArray[i] == oldArray[j]) {
+        int newArrayLength = oldArrayVer2.length;
+        for (int i = 0; i < oldArrayVer2.length; i++) {
+            for (int j = i + 1; j < oldArrayVer2.length; j++) {
+                if (oldArrayVer2[i] == oldArrayVer2[j]) {
                     newArrayLength--;
                     break;
                 }
             }
         }
-        int[] newArray = new int[newArrayLength];
+        int[] newArrayVer2 = new int[newArrayLength];
 
         int uniqueInd = 0;
-        for (int item : oldArray) {
+        for (int item : oldArrayVer2) {
             boolean isInNewArr = false;
             for (int i = 0; i < uniqueInd; i++) {
-                if (newArray[i] == item) {
+                if (newArrayVer2[i] == item) {
                     isInNewArr = true;
                     break;
                 }
             }
             if (!isInNewArr) {
-                newArray[uniqueInd] = item;
+                newArrayVer2[uniqueInd] = item;
                 uniqueInd++;
             }
         }
 
         System.out.print("Массив чисел в ед.ч.: [");
-        for (int i = 0; i < newArray.length; i++) {
-            System.out.printf("%2s", newArray[i]);
-            if (i != newArray.length - 1) {
+        for (int i = 0; i < newArrayVer2.length; i++) {
+            System.out.printf("%2s", newArrayVer2[i]);
+            if (i != newArrayVer2.length - 1) {
                 System.out.print(";");
             }
         }
