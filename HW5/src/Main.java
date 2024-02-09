@@ -105,6 +105,55 @@ public class Main {
         System.out.println("]");
         System.out.println();
 
+        System.out.println("===ВТОРОЙ СПОСОБ===");
+
+        int[] oldArrayVer2 = new int[10];
+        System.out.print("Исходный массив: [");
+        for (int i = 0; i < oldArrayVer2.length; i++) {
+            oldArrayVer2[i] = (int) (Math.random() * 5);
+            System.out.printf("%2s", oldArrayVer2[i]);
+            if (i != oldArrayVer2.length - 1) {
+                System.out.print(";");
+            }
+        }
+        System.out.println("]");
+
+        int newArrayLengthVer2 = oldArrayVer2.length;
+        for (int i = 0; i < oldArrayVer2.length; i++) {
+            for (int j = i + 1; j < oldArrayVer2.length; j++) {
+                if (oldArrayVer2[i] == oldArrayVer2[j]) {
+                    newArrayLengthVer2--;
+                    break;
+                }
+            }
+        }
+        int[] newArrayVer2 = new int[newArrayLengthVer2];
+
+        int uniqueInd = 0;
+        for (int item : oldArrayVer2) {
+            boolean isInNewArr = false;
+            for (int i = 0; i < uniqueInd; i++) {
+                if (newArrayVer2[i] == item) {
+                    isInNewArr = true;
+                    break;
+                }
+            }
+            if (!isInNewArr) {
+                newArrayVer2[uniqueInd] = item;
+                uniqueInd++;
+            }
+        }
+
+        System.out.print("Массив чисел в ед.ч.: [");
+        for (int i = 0; i < newArrayVer2.length; i++) {
+            System.out.printf("%2s", newArrayVer2[i]);
+            if (i != newArrayVer2.length - 1) {
+                System.out.print(";");
+            }
+        }
+        System.out.println("]");
+
+
         System.out.println(ANSI_GREEN + "#5.3 Выполнить слияние 2 упорядоченных массивов в один упорядоченный массив" + ANSI_RESET);
 
         int[] firstSortedArray = new int[7];

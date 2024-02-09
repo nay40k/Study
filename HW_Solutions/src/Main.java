@@ -11,16 +11,16 @@ public class Main {
         }
         System.out.println("]");
 
-        int newArrayLength = oldArrayVer2.length;
+        int newArrayLengthVer2 = oldArrayVer2.length;
         for (int i = 0; i < oldArrayVer2.length; i++) {
             for (int j = i + 1; j < oldArrayVer2.length; j++) {
                 if (oldArrayVer2[i] == oldArrayVer2[j]) {
-                    newArrayLength--;
+                    newArrayLengthVer2--;
                     break;
                 }
             }
         }
-        int[] newArrayVer2 = new int[newArrayLength];
+        int[] newArrayVer2 = new int[newArrayLengthVer2];
 
         int uniqueInd = 0;
         for (int item : oldArrayVer2) {
