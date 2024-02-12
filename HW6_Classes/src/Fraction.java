@@ -11,8 +11,29 @@ public class Fraction {
     private int numerator;
     private int denominator;
 
-    public Car() {
-
+    public Fraction(int numerator, int denominator) {
+        this.numerator = numerator;
+        this.denominator = denominator;
     }
-    
+
+
+    public String toString() {
+        return numerator + " / " + denominator;
+    }
+
+    public Fraction sum(Fraction otherFraction) {
+        int resultNumerator = this.numerator * otherFraction.denominator + otherFraction.numerator * this.denominator;
+        int resultDenominator = this.denominator * otherFraction.denominator;
+        return new Fraction(resultNumerator, resultDenominator);
+    }
+
+    public Fraction multiply(double number) {
+        int resultNumerator = (int) (this.numerator * number);
+        return new Fraction(resultNumerator, this.denominator);
+    }
+
+    public Fraction divide(double number) {
+        int resultDenominator = (int) (this.denominator * number);
+        return new Fraction(this.numerator, resultDenominator);
+    }
 }
