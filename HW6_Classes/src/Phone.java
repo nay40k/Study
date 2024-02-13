@@ -29,9 +29,9 @@ public class Phone {
     }
 
     public static void main(String[] args) {
-        Phone phone1 = new Phone("+375256161718", "Google Pixel 7", 0.3);
-        Phone phone2 = new Phone("+375291949596", "Redmi Note 11", 0.4);
-        Phone phone3 = new Phone("+375257535455", "iPhone 12 mini", 0.2);
+        Phone phone1 = new Phone("+375256161718", "Google Pixel 7", 0.197);
+        Phone phone2 = new Phone("+375291949596", "Redmi Note 11", 0.179);
+        Phone phone3 = new Phone("+375257535455", "iPhone 12 mini", 0.135);
 
         System.out.println("Телефон 1:");
         System.out.println("Номер: " + phone1.getNumber());
@@ -56,8 +56,8 @@ public class Phone {
         phone2.receiveCall("Костя", phone2.getNumber());
         phone2.receiveCall("Оля", phone3.getNumber());
 
-        phone1.sendMessage("4444444444", "555555555");
-        phone2.sendMessage("123456789", "555555555", "999999999");
-        phone3.sendMessage("123456789");
+        phone1.sendMessage("+375292625242", phone2.getNumber(), phone3.getNumber());
+        phone2.sendMessage("+375333213212", "+375256161616", "+375296546544");
+        phone3.sendMessage("+375293752912", phone1.getNumber());
     }
 }
