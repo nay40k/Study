@@ -19,39 +19,30 @@ public class Main {
         System.out.println();
 
         System.out.println(ANSI_GREEN + "#4.2 Найдите сумму и произведение цифр числа, введенного с клавиатуры" + ANSI_RESET);
-        int randomNumber = (int) (Math.random() * 999); //рандом вместо ручного ввода
-        int tempRandomNumberSum = randomNumber;
-        int tempRandomNumberProduct = randomNumber;
-        System.out.printf("%30s", "Число: ");
-        System.out.println(tempRandomNumberSum);
-        int sumOfTheDigitsOfTheNumber = 0;
-        int multiplyingTheDigitsOfTheNumber = 1;
-        while (tempRandomNumberSum > 0) {
-            sumOfTheDigitsOfTheNumber += (tempRandomNumberSum % 10);
-            tempRandomNumberSum /= 10;
+        int number = (int) (Math.random() * 1000); //рандом вместо ручного ввода
+        System.out.println("Число: " + number);
+        int sum = 0;
+        int mult = 1;
+        while (number > 0) {
+            sum += number % 10;
+            mult *= number % 10;
+            number /= 10;
         }
-        System.out.printf("%30s", "Сумма цифр числа: ");
-        System.out.println(sumOfTheDigitsOfTheNumber);
-        while (tempRandomNumberProduct > 0) {
-            multiplyingTheDigitsOfTheNumber *= (tempRandomNumberProduct % 10);
-            tempRandomNumberProduct /= 10;
-        }
-        System.out.printf("%30s", "Произведение цифр числа: ");
-        System.out.println(multiplyingTheDigitsOfTheNumber);
-        System.out.println();
+        System.out.println("Сумма цифр числа: " + sum + "\nПроизведение цифр числа: " + mult);
+
 
         System.out.println(ANSI_GREEN + "#4.3 Найдите самую большую цифру числа, введенного с клавиатуры, а также ее индекс" + ANSI_RESET);
-        randomNumber = (int) (Math.random() * 999999); //рандом вместо ручного ввода
+        number = (int) (Math.random() * 999999); //рандом вместо ручного ввода
         System.out.printf("%30s", "Введённое число: "); //форматированный вывод чтобы в консоли числа были друг над другом
-        System.out.println(randomNumber);
+        System.out.println(number);
         int max = 0;
         int index = 0;
-        for (int i = 0; randomNumber > 0; i++) {
-            if ((randomNumber % 10) > max) {
-                max = (randomNumber % 10);
+        for (int i = 0; number > 0; i++) {
+            if ((number % 10) > max) {
+                max = (number % 10);
                 index = i;
             }
-            randomNumber /= 10;
+            number /= 10;
         }
         System.out.printf("%30s", "Самая большая цифра числа: ");
         System.out.println(max);
@@ -115,19 +106,19 @@ public class Main {
 
 
         System.out.println(ANSI_GREEN + "#4.7 Для введенного целого числа определить является ли это число простым" + ANSI_RESET);
-        int primeNumberOrNot = (int) (Math.random() * 99 + 1);
-        System.out.println("Сгенерированное целое число: " + primeNumberOrNot);
-        boolean notPrime = false;
-        for (int i = 2; i < primeNumberOrNot; i++) {
-            if (primeNumberOrNot % i == 0) {
-                notPrime = true;
+        int num = (int) (Math.random() * 99 + 1);
+        System.out.println("Сгенерированное целое число: " + num);
+        boolean isPrime = true;
+        for (int i = 2; i < num; i++) {
+            if (num % i == 0) {
+                isPrime = false;
                 break;
             }
         }
-        if (notPrime) {
-            System.out.println("Число не простое");
-        } else {
+        if (isPrime) {
             System.out.println("Число простое");
+        } else {
+            System.out.println("Число не простое");
         }
         System.out.println();
 
