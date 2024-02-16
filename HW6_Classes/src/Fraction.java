@@ -1,12 +1,3 @@
-/*
-Создайте класс с именем fraction, содержащий два поля типа int - числитель и знаменатель обыкновенной дроби.
-Конструктор класса должен инициализировать их заданным набором значений;
-Создайте метод класса, который будет выводить дробь в текстовую строку в формате x / y;
-Mетод, добавляющий (сложение) к текущей дроби дробь, переданную ему в параметре и возвращающий дробь - результат сложения;
-Метод, умножающий (произведение) текущую дробь на число типа double, переданное ему в параметре и возвращающий дробь - результат умножения;
-Метод, делящий (деление) текущую дробь на число типа double, переданное ему в параметре и возвращающий дробь - результат деления.
- */
-
 public class Fraction {
     private int numerator;
     private int denominator;
@@ -28,12 +19,12 @@ public class Fraction {
     }
 
     public Fraction multiply(double number) {
-        int resultNumerator = (int) (this.numerator * number);
-        return new Fraction(resultNumerator, this.denominator);
+        int resultNumerator = (int) (this.numerator * number * 100);
+        return new Fraction(resultNumerator, this.denominator * 100);
     }
 
     public Fraction divide(double number) {
-        int resultDenominator = (int) (this.denominator * number);
-        return new Fraction(this.numerator, resultDenominator);
+        int resultDenominator = (int) (this.denominator * number * 100);
+        return new Fraction(this.numerator * 100, resultDenominator);
     }
 }
