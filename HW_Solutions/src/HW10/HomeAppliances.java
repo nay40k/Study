@@ -1,7 +1,7 @@
 package HW10;
 
 // Интерфейс для домашней техники
-interface HomeAppliance {
+interface HomeAppliances {
     void plugIn(); // Метод для включения в розетку
-    double getPower(); // Метод для получения потребляемой мощности
+    int getPower(); // Метод для получения потребляемой мощности
 }

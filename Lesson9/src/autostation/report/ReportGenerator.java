@@ -10,9 +10,7 @@ public class ReportGenerator {
         report.append(car.getReport());
     }
 
-    public String getReport() { return report.toString();{
-        for (Car car : carPark) {
-
-        }
+    public String getReport() {
+        return report.toString();
     }
 }

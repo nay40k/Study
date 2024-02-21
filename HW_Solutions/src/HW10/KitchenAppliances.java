@@ -1,11 +1,11 @@
 package HW10;
 
 // Абстрактный класс для кухонной техники
-abstract class KitchenAppliance implements HomeAppliance {
+abstract class KitchenAppliances implements HomeAppliances {
     private String name;
-    private double power;
+    private int power;
 
-    public KitchenAppliance(String name, double power) {
+    public KitchenAppliances(String name, int power) {
         this.name = name;
         this.power = power;
     }
@@ -16,7 +16,7 @@ abstract class KitchenAppliance implements HomeAppliance {
     }
 
     @Override
-    public double getPower() {
+    public int getPower() {
         return power;
     }
 

@@ -1,7 +1,6 @@
 package HW10;
 
-
-class Microwave extends KitchenAppliance {
+class Microwave extends KitchenAppliances {
     public Microwave() {
         super("Микроволновка", 1200);
     }

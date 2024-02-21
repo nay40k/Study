@@ -1,3 +1,4 @@
+package transport;
 //Парк общественного транспорта.
 //Определить иерархию различных видов ОТ.
 //Создать парк ОТ.
@@ -8,9 +9,15 @@
 
 public abstract class Transport {
 
-    private int price;
+    public int price;
 
-    private int fuelConsumption;
+    public int fuelConsumption;
+
+    public Transport(int fuelConsumption, int price) {
+        this.fuelConsumption = fuelConsumption;
+        this.price = price;
+
+    }
 
     public int getPrice() {
         return price;
@@ -27,5 +34,7 @@ public abstract class Transport {
     public void setFuelConsumption(int fuelConsumption) {
         this.fuelConsumption = fuelConsumption;
     }
+
+
 
 }

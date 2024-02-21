@@ -2,9 +2,9 @@ package HW10;
 
 import java.util.Comparator;
 
-class PowerComparator implements Comparator<HomeAppliance> {
+class PowerComparator implements Comparator<HomeAppliances> {
     @Override
-    public int compare(HomeAppliance a1, HomeAppliance a2) {
+    public int compare(HomeAppliances a1, HomeAppliances a2) {
         return Double.compare(a1.getPower(), a2.getPower());
     }
 }

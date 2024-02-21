@@ -5,13 +5,24 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<HomeAppliance> appliances = new ArrayList<>();
+        HomeAppliances appliances = new HomeAppliances() {
+            @Override
+            public void plugIn() {
+
+            }
+
+            @Override
+            public int getPower() {
+                return 0;
+            }
+        };
+//        List<HomeAppliances> appliances = new ArrayList<>();
         appliances.add(new Microwave());
         appliances.add(new Blender());
 
         // Включаем все приборы в розетку и считаем общую потребляемую мощность
         double totalPower = 0;
-        for (HomeAppliance appliance : appliances) {
+        for (HomeAppliances appliance : appliances) {
             appliance.plugIn();
             totalPower += appliance.getPower();
         }
@@ -21,7 +32,7 @@ public class Main {
         appliances.sort(new PowerComparator());
         System.out.println("Приборы отсортированы по мощности:");
 
-        for (HomeAppliance appliance : appliances) {
+        for (HomeAppliances appliance : appliances) {
             System.out.println(appliance.getClass().getSimpleName() + " - " + appliance.getPower() + " Вт");
         }
 
@@ -29,8 +40,8 @@ public class Main {
         double minPower = 400;
         double maxPower = 800;
         System.out.println("Кухонные приборы в диапазоне от " + minPower + " до " + maxPower + " Вт:");
-        for (HomeAppliance appliance : appliances) {
-            if (appliance instanceof KitchenAppliance) {
+        for (HomeAppliances appliance : appliances) {
+            if (appliance instanceof KitchenAppliances) {
                 double power = appliance.getPower();
                 if (power >= minPower && power <= maxPower) {
                     System.out.println(appliance.getClass().getSimpleName() + " - " + power + " Вт");
