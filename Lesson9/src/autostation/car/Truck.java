@@ -1,4 +1,4 @@
-package car;
+package autostation.car;
 
 public class Truck extends Car{
     @Override
@@ -7,5 +7,10 @@ public class Truck extends Car{
     }
     public void load() {
         System.out.println("loaded");
+    }
+
+    @Override
+    public String getReport() {
+        return String.format("Truck №%d\n", this.id);
     }
 }

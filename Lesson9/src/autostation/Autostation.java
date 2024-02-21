@@ -1,4 +1,7 @@
-package car;
+package autostation;
+
+import autostation.car.Car;
+import autostation.report.ReportGenerator;
 
 public class Autostation {
 
@@ -20,4 +23,13 @@ public class Autostation {
             car.doWork();
         }
     }
+
+    public String getReport() {
+        ReportGenerator generator = new ReportGenerator();
+        for (Car car : carPark) {
+            generator.addToReport(car);
+        }
+        return generator.getReport();
+    }
+}
 }
