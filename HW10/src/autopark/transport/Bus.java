@@ -1,9 +1,9 @@
-package autopark;
+package autopark.transport;
 
-class Bus extends PublicTransport {
+public class Bus extends Transport {
     private int passengerCapacity;
 
-    public Bus(String model, double fuelConsumption, double cost, int passengerCapacity) {
+    public Bus(String model, int fuelConsumption, int cost, int passengerCapacity) {
         super(model, fuelConsumption, cost);
         this.passengerCapacity = passengerCapacity;
     }

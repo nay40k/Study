@@ -1,25 +1,28 @@
 package autopark;
 
-class TransportPark {
-    PublicTransport[] vehicles;
+import autopark.transport.Bus;
+import autopark.transport.Transport;
+
+public class AutoPark {
+    public Transport[] vehicles;
     private int size;
 
-    public TransportPark(int capacity) {
-        vehicles = new PublicTransport[capacity];
+    public AutoPark(int capacity) {
+        vehicles = new Transport[capacity];
         size = 0;
     }
 
-    public void addVehicle(PublicTransport vehicle) {
+    public void addVehicle(Transport vehicle) {
         if (size < vehicles.length) {
             vehicles[size] = vehicle;
             size++;
         } else {
-            System.out.println("Transport park is full. Cannot add more vehicles.");
+            System.out.println("Автопарк переполнен. Добавление транспорта невозможно.");
         }
     }
 
-    public double calculateTotalCost() {
-        double totalCost = 0;
+    public int calculateTotalCost() {
+        int totalCost = 0;
         for (int i = 0; i < size; i++) {
             totalCost += vehicles[i].getCost();
         }
@@ -30,7 +33,7 @@ class TransportPark {
         for (int i = 0; i < size - 1; i++) {
             for (int j = 0; j < size - i - 1; j++) {
                 if (vehicles[j].getFuelConsumption() > vehicles[j + 1].getFuelConsumption()) {
-                    PublicTransport temp = vehicles[j];
+                    Transport temp = vehicles[j];
                     vehicles[j] = vehicles[j + 1];
                     vehicles[j + 1] = temp;
                 }
@@ -38,7 +41,7 @@ class TransportPark {
         }
     }
 
-    public Bus[] findBusesInRange(double minFuelConsumption, double maxFuelConsumption) {
+    public Bus[] findBusesInRange(int minFuelConsumption, int maxFuelConsumption) {
         Bus[] result = new Bus[size];
         int count = 0;
         for (int i = 0; i < size; i++) {
