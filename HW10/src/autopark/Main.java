@@ -14,7 +14,7 @@ public class Main {
         park.addVehicle(new Bus("ЗиЛ", 36, 120000, 35));
         park.addVehicle(new Bus("ПАЗ", 18, 96000, 32));
         park.addVehicle(new Taxi("Лада Веста", 12, 12000, "B"));
-        park.addVehicle(new ShuttleBus("Газель", 16, 20000, 18));
+        park.addVehicle(new ShuttleBus("Газель", 16, 20000, 18, true));
 
         System.out.println("Общая стоимость транспортных средств: " + park.calculateTotalCost());
 
