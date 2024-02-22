@@ -22,11 +22,11 @@ public class AutoPark {
     }
 
     public int calculateTotalCost() {
-        int totalCost = 0;
+        int total = 0;
         for (int i = 0; i < size; i++) {
-            totalCost += vehicles[i].getCost();
+            total += vehicles[i].getCost();
         }
-        return totalCost;
+        return total;
     }
 
     public void sortVehiclesByFuelConsumption() {
