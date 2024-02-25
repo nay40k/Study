@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Pluggable[] appliances = {
                 new Fridge("Холодильник", 200),
-                new Toaster("Микроволновка", 800),
+                new MicrowaveOven("Микроволновка", 800),
                 new TV("Телевизор", 150)
         };
 
