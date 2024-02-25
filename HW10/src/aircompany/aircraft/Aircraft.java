@@ -6,6 +6,7 @@ public abstract class Aircraft {
     private double cargoCapacity;
     private int flightRange;
 
+    // конструктор
     public Aircraft(String model, int capacity, double cargoCapacity, int flightRange) {
         this.model = model;
         this.capacity = capacity;
@@ -13,6 +14,7 @@ public abstract class Aircraft {
         this.flightRange = flightRange;
     }
 
+    // геттеры
     public String getModel() {
         return model;
     }

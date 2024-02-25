@@ -17,7 +17,7 @@ public class AutoPark {
             vehicles[size] = vehicle;
             size++;
         } else {
-            System.out.println("Автопарк переполнен. Добавление транспорта невозможно.");
+            System.out.println("Автопарк заполнен. Добавление транспорта невозможно.");
         }
     }
 
@@ -58,7 +58,10 @@ public class AutoPark {
 
     private Bus[] trimBusArray(Bus[] buses, int count) {
         Bus[] trimmedArray = new Bus[count];
-        System.arraycopy(buses, 0, trimmedArray, 0, count);
+//        System.arraycopy(buses, 0, trimmedArray, 0, count);
+        for (int i = 0; i < count; i++) {
+            trimmedArray[i] = buses[i];
+        }
         return trimmedArray;
     }
 }

@@ -4,6 +4,8 @@ import aircompany.aircraft.Aircraft;
 import aircompany.aircraft.Airplane;
 import aircompany.aircraft.Helicopter;
 import aircompany.aircraft.Quadcopter;
+import autopark.transport.Bus;
+import autopark.transport.Transport;
 
 public class Main {
     public static void main(String[] args) {

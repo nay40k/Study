@@ -2,33 +2,39 @@ package homeappliances;
 
 public class Main {
     public static void main(String[] args) {
-        Pluggable[] appliances = {
-                new Fridge("Холодильник", 200),
-                new MicrowaveOven("Микроволновка", 800),
-                new TV("Телевизор", 150)
-        };
+        ApplianceManager flat = new ApplianceManager(10);
 
-        Apartment apartment = new Apartment(appliances);
+        KitchenAppliance mixer = new KitchenAppliance("Миксер \"Вихрь\"", 300);
+        KitchenAppliance microwave = new KitchenAppliance("Микроволновка \"LG\"", 1200);
+        EntertainmentAppliance tv = new EntertainmentAppliance("Телевизор \"Samsung\"", 150);
+        EntertainmentAppliance gameConsole = new EntertainmentAppliance("Приставка \"Sony PS4 pro\"", 310);
+        CleaningAppliances vacuumCleaner = new CleaningAppliances("Пылесос \"LG\"", 1800);
 
-        // Включаем некоторые приборы
-        appliances[0].plugIn();
-        appliances[2].plugIn();
+        flat.addAppliance(mixer);
+        flat.addAppliance(microwave);
+        flat.addAppliance(tv);
+        flat.addAppliance(gameConsole);
+        flat.addAppliance(vacuumCleaner);
 
-        // Рассчитываем потребляемую мощность
-        System.out.println("Суммарная потребляемая мощность: " + apartment.calculateTotalPower() + "Вт");
+        mixer.plugIn();
+        microwave.plugIn();
+        tv.plugIn();
+        gameConsole.plugIn();
 
-        // Сортируем приборы по мощности
-        apartment.sortByPower();
-        for (Pluggable appliance : appliances) {
+        System.out.println("Суммарное потребление мощности подключенными приборами:\n" + flat.calculateTotalPowerConsumption() + "Вт");
+
+        flat.sortAppliancesByPower();
+        System.out.println("Приборы отсортированы по номинальной мощности:");
+        for (int i = 0; i < flat.getCount(); i++) {
+            HomeAppliance appliance = flat.appliances[i];
             System.out.println(appliance.getName() + ": " + appliance.getPower() + "Вт");
         }
 
-        // Ищем кухонный прибор в заданном диапазоне мощности
-        KitchenAppliance foundAppliance = apartment.findKitchenApplianceInRange(100, 500);
+        HomeAppliance foundAppliance = flat.findKitchenApplianceInRange(300, 500);
         if (foundAppliance != null) {
             System.out.println("Кухонные приборы в заданном диапазоне мощности: " + foundAppliance.getName());
         } else {
-            System.out.println("Кухонных приборов в заданном диапазоне не найдено.");
+            System.out.println("Кухонные приборы в заданном диапазоне мощности отсутствуют.");
         }
     }
 }

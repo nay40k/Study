@@ -16,7 +16,7 @@ class Airline {
             fleet[size] = aircraft;
             size++;
         } else {
-            System.out.println("Fleet is full. Cannot add more aircraft.");
+            System.out.println("Флот полон. Добавление новых судов невозможно.");
         }
     }
 
@@ -62,7 +62,10 @@ class Airline {
 
     private Aircraft[] trimAircraftArray(Aircraft[] aircrafts, int count) {
         Aircraft[] trimmedArray = new Aircraft[count];
-        System.arraycopy(aircrafts, 0, trimmedArray, 0, count);
+//        System.arraycopy(aircrafts, 0, trimmedArray, 0, count);
+        for (int i = 0; i < count; i++) {
+            trimmedArray[i] = aircrafts[i];
+        }
         return trimmedArray;
     }
 }
