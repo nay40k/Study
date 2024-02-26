@@ -1,13 +1,13 @@
 package aircompany.aircraft;
 
-public abstract class Aircraft {
+public abstract class AbstractAircraft {
     private String model;
     private int capacity;
     private double cargoCapacity;
     private int flightRange;
 
     // конструктор
-    public Aircraft(String model, int capacity, double cargoCapacity, int flightRange) {
+    public AbstractAircraft(String model, int capacity, double cargoCapacity, int flightRange) {
         this.model = model;
         this.capacity = capacity;
         this.cargoCapacity = cargoCapacity;

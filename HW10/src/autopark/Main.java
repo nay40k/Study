@@ -3,7 +3,7 @@ package autopark;
 import autopark.transport.Bus;
 import autopark.transport.ShuttleBus;
 import autopark.transport.Taxi;
-import autopark.transport.Transport;
+import autopark.transport.AbstractTransport;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class Main {
 
         park.sortVehiclesByFuelConsumption();
         System.out.println("Сортировка по расходу топлива:");
-        for (Transport vehicle : park.vehicles) {
+        for (AbstractTransport vehicle : park.vehicles) {
             if (vehicle != null) {
                 System.out.println(vehicle.getModel() + ": " + vehicle.getFuelConsumption() + " л/100км");
             }

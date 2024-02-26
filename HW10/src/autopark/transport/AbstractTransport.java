@@ -1,13 +1,13 @@
 package autopark.transport;
 
-public abstract class Transport {
+public abstract class AbstractTransport {
     private String model;
     private int fuelConsumption;
     private int cost;
 
 
     // конструктор абстрактного класса
-    public Transport(String model, int fuelConsumption, int cost) {
+    public AbstractTransport(String model, int fuelConsumption, int cost) {
         this.model = model;
         this.fuelConsumption = fuelConsumption;
         this.cost = cost;

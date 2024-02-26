@@ -1,17 +1,17 @@
 package aircompany;
 
-import aircompany.aircraft.Aircraft;
+import aircompany.aircraft.AbstractAircraft;
 
 class Airline {
-    Aircraft[] fleet;
+    AbstractAircraft[] fleet;
     private int size;
 
     public Airline(int capacity) {
-        fleet = new Aircraft[capacity];
+        fleet = new AbstractAircraft[capacity];
         size = 0;
     }
 
-    public void addAircraft(Aircraft aircraft) {
+    public void addAircraft(AbstractAircraft aircraft) {
         if (size < fleet.length) {
             fleet[size] = aircraft;
             size++;
@@ -40,7 +40,7 @@ class Airline {
         for (int i = 0; i < size - 1; i++) {
             for (int j = 0; j < size - i - 1; j++) {
                 if (fleet[j].getFlightRange() > fleet[j + 1].getFlightRange()) {
-                    Aircraft temp = fleet[j];
+                    AbstractAircraft temp = fleet[j];
                     fleet[j] = fleet[j + 1];
                     fleet[j + 1] = temp;
                 }
@@ -48,8 +48,8 @@ class Airline {
         }
     }
 
-    public Aircraft[] findAircraftInRange(int minRange, int maxRange) {
-        Aircraft[] result = new Aircraft[size];
+    public AbstractAircraft[] findAircraftInRange(int minRange, int maxRange) {
+        AbstractAircraft[] result = new AbstractAircraft[size];
         int count = 0;
         for (int i = 0; i < size; i++) {
             if (fleet[i].getFlightRange() >= minRange && fleet[i].getFlightRange() <= maxRange) {
@@ -60,12 +60,9 @@ class Airline {
         return trimAircraftArray(result, count);
     }
 
-    private Aircraft[] trimAircraftArray(Aircraft[] aircrafts, int count) {
-        Aircraft[] trimmedArray = new Aircraft[count];
-//        System.arraycopy(aircrafts, 0, trimmedArray, 0, count);
-        for (int i = 0; i < count; i++) {
-            trimmedArray[i] = aircrafts[i];
-        }
+    private AbstractAircraft[] trimAircraftArray(AbstractAircraft[] aircraft, int count) {
+        AbstractAircraft[] trimmedArray = new AbstractAircraft[count];
+        System.arraycopy(aircraft, 0, trimmedArray, 0, count);
         return trimmedArray;
     }
 }

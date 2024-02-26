@@ -1,18 +1,18 @@
 package autopark;
 
 import autopark.transport.Bus;
-import autopark.transport.Transport;
+import autopark.transport.AbstractTransport;
 
 public class AutoPark {
-    public Transport[] vehicles;
+    public AbstractTransport[] vehicles;
     private int size;
 
     public AutoPark(int capacity) {
-        vehicles = new Transport[capacity];
+        vehicles = new AbstractTransport[capacity];
         size = 0;
     }
 
-    public void addVehicle(Transport vehicle) {
+    public void addVehicle(AbstractTransport vehicle) {
         if (size < vehicles.length) {
             vehicles[size] = vehicle;
             size++;
@@ -33,7 +33,7 @@ public class AutoPark {
         for (int i = 0; i < size - 1; i++) {
             for (int j = 0; j < size - i - 1; j++) {
                 if (vehicles[j].getFuelConsumption() > vehicles[j + 1].getFuelConsumption()) {
-                    Transport temp = vehicles[j];
+                    AbstractTransport temp = vehicles[j];
                     vehicles[j] = vehicles[j + 1];
                     vehicles[j + 1] = temp;
                 }
@@ -58,10 +58,7 @@ public class AutoPark {
 
     private Bus[] trimBusArray(Bus[] buses, int count) {
         Bus[] trimmedArray = new Bus[count];
-//        System.arraycopy(buses, 0, trimmedArray, 0, count);
-        for (int i = 0; i < count; i++) {
-            trimmedArray[i] = buses[i];
-        }
+        System.arraycopy(buses, 0, trimmedArray, 0, count);
         return trimmedArray;
     }
 }

@@ -1,11 +1,9 @@
 package aircompany;
 
-import aircompany.aircraft.Aircraft;
+import aircompany.aircraft.AbstractAircraft;
 import aircompany.aircraft.Airplane;
 import aircompany.aircraft.Helicopter;
 import aircompany.aircraft.Quadcopter;
-import autopark.transport.Bus;
-import autopark.transport.Transport;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,17 +19,17 @@ public class Main {
 
         airline.sortAircraftByFlightRange();
         System.out.println("Воздушные суда по дальности полёта:");
-        for (Aircraft aircraft : airline.fleet) {
+        for (AbstractAircraft aircraft : airline.fleet) {
             if (aircraft != null) {
                 System.out.println(aircraft.getModel() + ": " + aircraft.getFlightRange() + "км");
             }
         }
 
-        int minRange = 500;
-        int maxRange = 6000;
-        Aircraft[] aircraftInRange = airline.findAircraftInRange(minRange, maxRange);
+        int minRange = 3600;
+        int maxRange = 5600;
+        AbstractAircraft[] aircraftInRange = airline.findAircraftInRange(minRange, maxRange);
         System.out.println("Воздушные суда с дальностью полёта от " + minRange + " до " + maxRange + "км:");
-        for (Aircraft aircraft : aircraftInRange) {
+        for (AbstractAircraft aircraft : aircraftInRange) {
             if (aircraft != null) {
                 System.out.println(aircraft.getModel() + ": " + aircraft.getFlightRange() + "км");
             }

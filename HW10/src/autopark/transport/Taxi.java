@@ -1,6 +1,6 @@
 package autopark.transport;
 
-public class Taxi extends Transport {
+public class Taxi extends AbstractTransport {
 
     private String carClass;
 

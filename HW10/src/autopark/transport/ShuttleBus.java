@@ -1,6 +1,6 @@
 package autopark.transport;
 
-public class ShuttleBus extends Transport {
+public class ShuttleBus extends AbstractTransport {
     private int passengerCapacity;
 
     private boolean isYellow;
