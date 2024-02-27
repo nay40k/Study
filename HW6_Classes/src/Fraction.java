@@ -7,14 +7,21 @@ public class Fraction {
         this.denominator = denominator;
     }
 
+    public int getNumerator() {
+        return numerator;
+    }
+
+    public int getDenominator() {
+        return denominator;
+    }
 
     public String toString() {
         return numerator + " / " + denominator;
     }
 
-    public Fraction sum(Fraction otherFraction) {
-        int resultNumerator = this.numerator * otherFraction.denominator + otherFraction.numerator * this.denominator;
-        int resultDenominator = this.denominator * otherFraction.denominator;
+    public Fraction sum(Fraction fraction) {
+        int resultNumerator = this.numerator * fraction.getDenominator() + fraction.getNumerator() * this.denominator;
+        int resultDenominator = this.denominator * fraction.getDenominator();
         return new Fraction(resultNumerator, resultDenominator);
     }
 
