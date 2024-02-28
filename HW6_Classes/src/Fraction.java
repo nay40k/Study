@@ -15,6 +15,7 @@ public class Fraction {
         return denominator;
     }
 
+    @Override
     public String toString() {
         return numerator + " / " + denominator;
     }
