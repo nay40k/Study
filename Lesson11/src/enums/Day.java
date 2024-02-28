@@ -1,11 +1,7 @@
 package enums;
 
 public enum Day {
-    MONDAY,
-    TUESDAY,
-    WEDNESDAY,
-    THURSDAY,
-    FRIDAY,
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY,
     SATURDAY(false),
     SUNDAY(false);
 
