@@ -4,31 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d91e5046-1982-492e-95e4-1b93aa4721a3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HW10_generics.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/iterator/ArrayIterator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/iterator/Iterator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/iterator/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/iterator2D/ArrayIterator2D.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/iterator2D/Iterator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/iterator2D/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pair/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pair/Pair.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lesson12/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lesson12/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lesson12/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lesson12/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lesson12/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lesson12/Lesson12.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Lesson12/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW10/src/aircompany/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../HW10/src/aircompany/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lesson11/src/enums/Day.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson11/src/enums/Day.java" afterDir="false" />
+    <list default="true" id="d91e5046-1982-492e-95e4-1b93aa4721a3" name="Changes" comment="upd lessons">
+      <change afterPath="$PROJECT_DIR$/src/foodtype/FoodChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/foodtype/FoodType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/foodtype/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/foodtype/food/Fish.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/foodtype/food/Food.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/foodtype/food/Fruit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/foodtype/food/Meat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/foodtype/food/Milk.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/foodtype/food/Unknown.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/foodtype/food/Vegetable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/iterator/ArrayIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iterator/ArrayIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/iterator2D/ArrayIterator2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iterator2D/ArrayIterator2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/iterator2D/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iterator2D/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -65,12 +56,15 @@
     "git-widget-placeholder": "study",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/git/study/study/HW10_generics/src/iterator2D"
+    "last_opened_file_path": "C:/git/study/study/HW6_Classes"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\git\study\study\HW10_generics\src\iterator2D" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="foodtype.food" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -89,7 +83,37 @@
       <option name="presentableId" value="Default" />
       <updated>1709143998643</updated>
     </task>
+    <task id="LOCAL-00001" summary="HW10_generics 3/4 ready">
+      <option name="closed" value="true" />
+      <created>1709157297742</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709157297742</updated>
+    </task>
+    <task id="LOCAL-00002" summary="HW10_generics 3/4 ready">
+      <option name="closed" value="true" />
+      <created>1709157395089</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709157395089</updated>
+    </task>
+    <task id="LOCAL-00003" summary="upd lessons">
+      <option name="closed" value="true" />
+      <created>1709157449400</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709157449400</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="HW10_generics 3/4 ready" />
+    <MESSAGE value="upd lessons" />
+    <option name="LAST_COMMIT_MESSAGE" value="upd lessons" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

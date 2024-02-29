@@ -1,10 +1,12 @@
 package iterator;
 
-public class ArrayIterator<E> implements Iterator<E> {
-    private final E[] array;
+public class ArrayIterator<T> implements Iterator<T> {
+    private final T[] array;
+
     private int index = 0;
 
-    public ArrayIterator(E[] array) {
+
+    public ArrayIterator(T[] array) {
         this.array = array;
     }
 
@@ -14,9 +16,9 @@ public class ArrayIterator<E> implements Iterator<E> {
     }
 
     @Override
-    public E next() {
+    public T next() {
         if (!hasNext()) {
-            System.out.println("Массив закончился");
+            System.out.println("Неожиданный конец массива");
         }
         return array[index++];
     }

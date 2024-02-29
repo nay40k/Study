@@ -1,22 +1,20 @@
 package iterator2D;
 
-public class ArrayIterator2D<E> implements Iterator<E> {
-    private final E[][] array;
+public class ArrayIterator2D<T> implements Iterator<T> {
+    private final T[][] array;
 
-    private int index = 0;
     private int row = 0;
+    private int index = 0;
 
-    public ArrayIterator2D(E[][] array) {
+    public ArrayIterator2D(T[][] array) {
         this.array = array;
     }
 
     @Override
     public boolean hasNext() {
-        // Проверяем, есть ли следующий элемент в текущей строке
         if (row < array.length && index < array[row].length) {
             return true;
         }
-        // Переходим к следующей строке, если текущая закончилась
         while (row < array.length - 1) {
             row++;
             if (array[row].length > 0) {
@@ -28,12 +26,11 @@ public class ArrayIterator2D<E> implements Iterator<E> {
     }
 
     @Override
-    public E next() {
+    public T next() {
         if (!hasNext()) {
-            System.out.println("Конец массива");
+            System.out.println("Неожиданный конец массива");
         }
-        E value = array[row][index++];
-        // Переходим к следующей строке, если текущая закончилась
+        T value = array[row][index++];
         if (index >= array[row].length) {
             row++;
             index = 0;
