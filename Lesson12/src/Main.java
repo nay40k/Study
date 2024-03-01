@@ -32,5 +32,26 @@ public class Main {
         }
 
 
+        Map<String, Integer> map = new HashMap<>();
+        // HashMap<String, Integer> map = new TreeMap<>();
+        map.put("A", 6);
+        map.put("A-", 2);
+        map.put("B", 9);
+        System.out.println(map);
+        map.putIfAbsent("C", 7);
+        map.putIfAbsent("B", 11);
+        System.out.println(map);
+        System.out.println("F=" + map.get("F"));
+        System.out.println(map.containsKey("C"));
+
+        System.out.println("-----------------------------");
+        for (Map.Entry<String, Integer> entry: map.entrySet()) {
+            System.out.println(entry);
+        }
+        for (String k : map.keySet()) {
+            System.out.println(k + "=" + map.get(k));
+        }
+
+
     }
 }
