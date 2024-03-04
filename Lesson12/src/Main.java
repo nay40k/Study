@@ -52,6 +52,5 @@ public class Main {
             System.out.println(k + "=" + map.get(k));
         }
 
-
     }
 }
