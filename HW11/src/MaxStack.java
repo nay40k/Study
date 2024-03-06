@@ -30,7 +30,8 @@ public class MaxStack{
             increaseCapacity();
         }
         array[size++] = value;
-        if (maxSize == 0 || (value >= Math.abs(maxArray[maxSize - 1]))) {
+
+        if (maxSize == 0 || (value >= maxArray[maxSize - 1])) {
 //            if (maxSize == maxCapacity) {
 //                increaseMaxCapacity();
 //            } TODO common method for capacity increase
