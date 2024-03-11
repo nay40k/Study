@@ -1,16 +1,18 @@
 import java.util.Arrays;
 
-public class MaxStack{
+public class MaxStack {
     private int[] array;
     private int[] maxArray;
     private int size;
     private int maxSize;
     private int capacity;
+    private int maxCapacity;
 
     public MaxStack(int initialCapacity) {
         capacity = initialCapacity;
         array = new int[capacity];
-        maxArray = new int[capacity];
+        maxCapacity = capacity;
+        maxArray = new int[maxCapacity];
     }
 
     public boolean isEmpty() {
@@ -32,15 +34,20 @@ public class MaxStack{
         array[size++] = value;
 
         if (maxSize == 0 || (value >= maxArray[maxSize - 1])) {
-//            if (maxSize == maxCapacity) {
-//                increaseMaxCapacity();
-//            } TODO common method for capacity increase
+            if (maxSize == maxCapacity) {
+                increaseMaxCapacity();
+            }
             maxArray[maxSize++] = value;
         }
     }
 
     public int max() {
-        return maxArray[maxSize - 1];
+        if (isEmpty()) {
+            System.out.println("Stack is empty(max)");
+        } else {
+            return maxArray[maxSize - 1];
+        }
+        return 0;
     }
 
     @Override
@@ -48,28 +55,33 @@ public class MaxStack{
         return Arrays.toString(array) + " " + Arrays.toString(maxArray);
     }
 
-
-
     public Integer pop() {
         if (isEmpty()) {
             System.out.println("Stack is empty(pop)");
+        } else {
+
+            int i = array[--size];
+            array[size] = 0; //это необязательно т.к всё равно будем обращаться к массиву по индексу size
+            if (i == maxArray[maxSize - 1]) {
+                maxArray[maxSize - 1] = 0;
+                maxSize--;
+            }
+            return i;
         }
-        int i = array[--size];
-        if (i == maxArray[maxSize - 1]) {
-            maxArray[maxSize - 1] = 0;
-            maxSize--;
-        }
-        return i;
+        return 0;
     }
 
-    // придуиать как разделить capacity и унифицировать метод
     void increaseCapacity() {
         capacity = capacity * 2;
         int[] newArray = new int[capacity];
-        int[] newMaxArray = new int[capacity];
         System.arraycopy(array, 0, newArray, 0, size);
-        System.arraycopy(maxArray, 0, newMaxArray, 0, size);
         array = newArray;
+    }
+
+    void increaseMaxCapacity() {
+        maxCapacity = maxCapacity * 2;
+        int[] newMaxArray = new int[maxCapacity];
+        System.arraycopy(maxArray, 0, newMaxArray, 0, maxSize);
         maxArray = newMaxArray;
     }
 

@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Stack<Integer> intStack = new Stack<>(2); // Инициализируем стек с начальной емкостью 2
+
+        Stack<Integer> intStack = new Stack<>(2);
         intStack.push(1);
         intStack.push(2);
         intStack.push(3);
@@ -28,22 +29,6 @@ public class Main {
         maxStack.push(8);
         maxStack.push(7);
         maxStack.push(6);
-        maxStack.push(5);
-        maxStack.push(9);
-
-        System.out.println(maxStack);
-        System.out.println("Stack size: " + maxStack.size());
-        do {
-            System.out.printf("Current max %d, current top %d\n", maxStack.max(), maxStack.pop());
-        } while (!maxStack.isEmpty());
-
-        System.out.println(maxStack);
-
-        maxStack.push(1);
-        maxStack.push(17);
-        maxStack.push(3);
-//        maxStack.push(6);
-//        maxStack.push(15);
         System.out.println(maxStack);
 
         do {
@@ -52,6 +37,21 @@ public class Main {
 
         System.out.println(maxStack);
 
+        maxStack.push(40);
+        maxStack.push(41);
+        maxStack.push(42);
+        maxStack.push(443);
+        System.out.println(maxStack);
+
+        do {
+            System.out.printf("Current max %d, current top %d\n", maxStack.max(), maxStack.pop());
+        } while (!maxStack.isEmpty());
+        System.out.println(maxStack);
+
+        System.out.printf("Current max %d, current top %d\n", maxStack.max(), maxStack.pop());
+
+        maxStack.push(24);
+        System.out.println(maxStack);
 
     }
 }

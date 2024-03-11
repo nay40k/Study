@@ -5,7 +5,7 @@ public class Stack<T> {
     private int size;
     private int capacity;
 
-    @SuppressWarnings("unchecked") // если честно, Idea подсказала это вставить, а я и не стал спорить
+    @SuppressWarnings("unchecked")
     public Stack(int initialCapacity) {
         capacity = initialCapacity;
         array = (T[]) new Object[capacity];
