@@ -11,24 +11,24 @@ public class Game {
 
 
         while (true) {
-            int number = 0;
+            int number;
             System.out.print("Введите число:\n");
 
             try {
                 number = scanner.nextInt();
 
                 if (number > 100) {
-                    throw new BoundsException("Введите число до 100 включительно");
+                    throw new OutOfRangeException("Введите число до 100 включительно");
                 } else if (number <= 0) {
-                    throw new BoundsException("Введите число больше нуля");
+                    throw new OutOfRangeException("Введите число больше нуля");
                 }
 
             } catch (InputMismatchException ex) {
                 System.out.println("Допустимо вводить только целые числа 1...100");
                 scanner.next();
                 continue;
-            } catch (BoundsException e) {
-                System.out.println("Введённое число вне диапазона: " + e.getMessage());
+            } catch (OutOfRangeException e) {
+                System.out.println(e.getMessage());
                 continue;
             }
 
