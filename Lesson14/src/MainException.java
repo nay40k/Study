@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// пример с занятия 05.03
 class MainException {
     public static void main(String[] args) {
 
