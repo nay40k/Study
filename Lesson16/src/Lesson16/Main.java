@@ -1,3 +1,5 @@
+package Lesson16;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -7,7 +9,7 @@ public class Main {
         HelloRunnable helloRunnable = new HelloRunnable();
         Thread thread = new Thread(helloRunnable);
 
-        helloThread.setName("HelloThread");
+        helloThread.setName("Lesson16.HelloThread");
         thread.setName("JustThread");
 
 

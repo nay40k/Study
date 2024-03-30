@@ -1,4 +1,4 @@
-// https://metanit.com/java/tutorial/8.3.php
+package Lesson16;// https://metanit.com/java/tutorial/8.3.php
 
 public class Program {
 

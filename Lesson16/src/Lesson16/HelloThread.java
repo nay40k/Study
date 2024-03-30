@@ -1,3 +1,5 @@
+package Lesson16;
+
 public class HelloThread extends Thread{
     @Override
     public void run() {
