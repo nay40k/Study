@@ -8,34 +8,37 @@ package task1;
 // ○ найти сумму всех цифр
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
 
-        Collection<Integer> col = Arrays.asList(10, -11, -12, 13, -14, 15, 16, -17, 18, 19);
+        Collection<Integer> col = Arrays.asList(10, -11, -12, 13, -14, 15, 16, -17, 18, 19, -20);
 
-        Optional<Integer> min = col.stream().min(Comparator.naturalOrder());
+        Optional<Integer> min = col.stream()
+                .min(Comparator.naturalOrder());
         System.out.println(min.get());
 
-
-        Optional<Integer> max = col.stream().max(Comparator.naturalOrder());
+        Optional<Integer> max = col.stream()
+                .max(Comparator.naturalOrder());
         System.out.println(max.get());
 
-
-        OptionalDouble average = col.stream().mapToInt(e -> e).average();
+        OptionalDouble average = col.stream()
+                .mapToInt(e -> e).average();
         if (average.isPresent()) {
             System.out.println(average.getAsDouble());
         }
 
-
-        Optional<Integer> product = col.stream().reduce((x, y) -> x * y);
+        Optional<Integer> product = col.stream()
+                .reduce((x, y) -> x * y);
         product.ifPresent(System.out::println);
 
-        Optional<Integer> sum = col.stream().reduce(Integer::sum);
+        Optional<Integer> sum = col.stream()
+                .reduce(Integer::sum);
         sum.ifPresent(System.out::println);
 
-
         Integer digitSum = col.stream()
+                .map(Math::abs)
                 .map(num -> num.toString().chars().map(Character::getNumericValue).sum())
                 .reduce(0, Integer::sum);
         System.out.println(digitSum);
