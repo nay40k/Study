@@ -17,7 +17,7 @@ public abstract class Car {
         this.model = model;
     }
 
-    public abstract void doTO();
+    public abstract int doService();
 
     public int getId() {
         return id;

@@ -4,9 +4,9 @@ import carServiceStation.model.Auto;
 import carServiceStation.model.Car;
 import carServiceStation.model.Truck;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,7 +26,26 @@ public class Main {
         Auto auto4 = new Auto("T603");
 
         List<Car> cars = Arrays.asList(truck1, truck2, truck3, truck4, truck5, truck6, auto1, auto2, auto3, auto4);
-        cars.stream().sorted(Comparator.comparingInt(Car::getId)).forEach(serviceStation::doService);
+        List<Future<Integer>> invoices = new ArrayList<>();
+
+        cars.stream()
+                .sorted(Comparator.comparingInt(Car::getId))
+                .forEach(c -> invoices.add(serviceStation.doService(c)));
+
+        while (!invoices.isEmpty()) {
+            for (Iterator<Future<Integer>> iter = invoices.listIterator(); iter.hasNext();) {
+                Future<Integer> invoice = iter.next();
+                if (invoice.isDone()) {
+                    try {
+                        serviceStation.pay(invoice.get());
+                    } catch (InterruptedException | ExecutionException e) {
+                        throw new RuntimeException(e);
+                    }
+                    iter.remove();
+
+                }
+            }
+        }
 
 //        serviceStation.doService(truck1);
 //        serviceStation.doService(truck2);
