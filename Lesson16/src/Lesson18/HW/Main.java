@@ -44,7 +44,14 @@ public class Main {
             System.out.println(sum.get());
         }
 
-//        Optional<Integer> digitSum = col.stream().
+        Integer digitSum = col.stream()
+//                .map(Math::abs)
+                .map(num -> num.toString()
+                .filter()
+                        .chars()
+                        .map(Character::getNumericValue).sum())
+                .reduce(0, Integer::sum);
+        System.out.println(digitSum);
 
 
 
