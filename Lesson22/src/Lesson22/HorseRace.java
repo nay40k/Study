@@ -1,7 +1,7 @@
-/*
+package Lesson22;/*
 * Несколько всадников с лошадьми должны пройти контроль перед скачками.
 * Количество контролеров меньше количества всадников,
-* поэтому некоторые всадники будут дожидаться, пока не освободиться один из контролеров.
+* поэтому некоторые всадники будут дожидаться, пока не освободится один из контролеров.
 */
 
 import java.util.concurrent.ExecutorService;
@@ -18,7 +18,7 @@ public class HorseRace {
 
 //        Semaphore semaphore = new Semaphore(controllersCount);
         for (int i = 1; i <= ridersCount; i++) {
-//            Rider rider = new Rider(semaphore);
+//            Lesson22.Rider rider = new Lesson22.Rider(semaphore);
 //            new Thread(rider).start();
             Runnable rider = new Rider("всадник " + i);
             queue.execute(rider);
