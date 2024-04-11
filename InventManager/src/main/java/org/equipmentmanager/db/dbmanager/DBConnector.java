@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class DBConnector {
 
-    private static final String URL = "jdbc:sqlite:D:/study/InventManager/test.db";
+    private static final String URL = "jdbc:sqlite:test.db";
 
     /**
      * Получение объекта Connection для подключения к базе данных.

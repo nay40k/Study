@@ -11,4 +11,16 @@ public class User {
         this.password = password;
         this.isAdmin = isAdmin;
     }
+
+    public String getUsername() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean getIfAdmin() {
+        return isAdmin;
+    }
 }

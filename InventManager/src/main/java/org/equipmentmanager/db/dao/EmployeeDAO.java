@@ -7,13 +7,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Scanner;
 
-public class EmployeeDAO implements DAO {
+public class EmployeeDAO<T> implements DAO {
 
-    @Override
-    public void add(Object o) {
 
-    }
+
 
     @Override
     public void add(Employee employee) {
@@ -27,7 +26,31 @@ public class EmployeeDAO implements DAO {
             pstmt.executeUpdate();
             System.out.println("Сотрудник успешно добавлен.");
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.print("Ошибка при добавлении: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void add(Object entity) {
+
+    }
+
+    @Override
+    public void add() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        String sql = "INSERT INTO employees(name, salary) VALUES(?, ?)";
+        try (Connection conn = DBConnector.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            String a = scanner.next();
+            pstmt.setString(1, a);
+            String b = String.valueOf(scanner.nextDouble());
+            pstmt.setDouble(2, Double.parseDouble(b));
+            pstmt.executeUpdate();
+            System.out.println("Сотрудник успешно добавлен.");
+        } catch (SQLException e) {
+            System.out.print("Ошибка при добавлении: " + e.getMessage());
         }
     }
 

@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface DAO<T> {
 
-    void add(T t);
+    void add(Employee employee);
 
-    void add(Employee o);
+    void add(T entity);
+
+    void add();
 
     T getById(String id);
 
