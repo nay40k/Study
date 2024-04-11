@@ -3,12 +3,12 @@ package org.equipmentmanager.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Authenticator1 {
+public class UserAuthenticator {
 
     // TODO Хранить в файле/БД
     private List<User> users = new ArrayList<>();
 
-    public Authenticator1() {
+    public UserAuthenticator() {
         users.add(new User("user", "user123", false));
         users.add(new User("admin", "admin123", true));
     }

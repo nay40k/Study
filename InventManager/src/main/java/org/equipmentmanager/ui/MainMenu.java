@@ -1,6 +1,6 @@
 package org.equipmentmanager.ui;
 
-import org.equipmentmanager.model.Authenticator1;
+import org.equipmentmanager.model.UserAuthenticator;
 
 import java.util.Scanner;
 
@@ -13,12 +13,12 @@ public class MainMenu {
     }
 
     public void displayMenu() {
-        System.out.println("Welcome to Invent Manager App\n" +
-                "1 - Authorization\n" +
-                "2 - Option 2\n" +
-                "0 - Exit");
+        System.out.println("""
+                Welcome to Invent Manager App
+                1 - Authorization
+                2 - Option 2
+                0 - Exit""");
     }
-
 
 
     public void getUserInput() {
@@ -33,7 +33,7 @@ public class MainMenu {
                 case 1:
                     System.out.println("You selected Option 1");
                     System.out.println("<<вызывается аутентификатор>>");
-                    Authenticator1 authenticator = new Authenticator1();
+                    UserAuthenticator authenticator = new UserAuthenticator();
 
                     System.out.print("Enter username: ");
                     String username = scanner2.nextLine();
@@ -41,18 +41,15 @@ public class MainMenu {
                     System.out.print("Enter password: ");
                     String password = scanner2.nextLine();
 
-                    if (authenticator.authenticate(username, password)) {
-                        System.out.println("Authentication successful.");
+                    if (authenticator.adminRole(username, password)) {
+                        System.out.println("Вы вошли с правами администратора");
+                        AdminMenu adminMenu = new AdminMenu();
+                        adminMenu.getAdminInput();
+                        choice = 0;
+                    } else if (authenticator.authenticate(username, password)) {
+                        System.out.println("Вы вошли с правами пользователя");
 
-                        System.out.println("Выполняется какое-то действие");
-
-                        if (authenticator.adminRole(username, password)) {
-                            System.out.println("Вы вошли с правами администратора");
-                            AdminMenu adminMenu = new AdminMenu();
-                            adminMenu.getAdminInput();
-                            choice = 0;
-                        }
-
+                        System.out.println("<<Реализация меню пользователя>>");
                     } else {
                         System.out.println("Authentication failed. Access denied.");
                     }

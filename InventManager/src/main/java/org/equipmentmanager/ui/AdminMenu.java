@@ -1,7 +1,5 @@
 package org.equipmentmanager.ui;
 
-import org.equipmentmanager.model.Authenticator1;
-
 import java.util.Scanner;
 
 public class AdminMenu {
@@ -14,11 +12,12 @@ public class AdminMenu {
 
 
     public void displayAdminMenu() {
-        System.out.println("1 - Adding equipment to the warehouse\n" +
-                "2 - Adding users\n" +
-                "3 - Adding rooms\n" +
-                "4 - Moving equipment from the warehouse to the user\n" +
-                "0 - Back to main menu");
+        System.out.println("""
+                1 - Adding equipment to the warehouse
+                2 - Adding users
+                3 - Adding rooms
+                4 - Moving equipment from the warehouse to the user
+                0 - Back to main menu""");
 
     }
 
@@ -44,7 +43,7 @@ public class AdminMenu {
                     System.out.println("You selected Option 4");
                     break;
                 case 0:
-                    System.out.println("Exiting the program");
+                    System.out.println("Moving to main menu...");
                     MainMenu ui = new MainMenu();
                     ui.getUserInput();
                     break;
