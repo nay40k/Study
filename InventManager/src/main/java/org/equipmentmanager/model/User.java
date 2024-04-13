@@ -20,7 +20,7 @@ public class User {
         return password;
     }
 
-    public boolean getIfAdmin() {
+    public boolean getIsAdmin() {
         return isAdmin;
     }
 }
