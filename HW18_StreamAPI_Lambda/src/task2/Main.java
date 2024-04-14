@@ -29,6 +29,8 @@ public class Main {
                         return s2.substring(0, 1).compareTo(s1.substring(0, 1));
                     }
                 })
+                .skip(1)
+                .limit(myList.stream().filter(s -> !s.contains("3")).count() - 2)
                 .map(String::toUpperCase)
                 .toList();
 
