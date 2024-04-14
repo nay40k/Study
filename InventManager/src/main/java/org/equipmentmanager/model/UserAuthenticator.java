@@ -1,9 +1,18 @@
 package org.equipmentmanager.model;
 
+import org.equipmentmanager.db.dbmanager.DBConnector;
+
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.*;
 
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserAuthenticator {
+    private Connection conn = DBConnector.connect();
 
     // TODO Хранить в файле/БД
     private List<User> users = new ArrayList<>();
@@ -31,7 +40,4 @@ public class UserAuthenticator {
         }
         return false;
     }
-
-
-
 }

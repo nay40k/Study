@@ -1,5 +1,10 @@
 package org.equipmentmanager.model;
+import lombok.*;
 
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class OfficeEquipment {
 
     private String name;

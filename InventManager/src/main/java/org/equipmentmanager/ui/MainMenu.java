@@ -31,13 +31,12 @@ public class MainMenu {
             Scanner scanner2 = new Scanner(System.in);
             switch (choice) {
                 case 1:
-                    System.out.println("You selected Option 1");
-                    System.out.println("<<вызывается аутентификатор>>");
+//                    System.out.println("You selected Option 1");
+//                    System.out.println("<<вызывается аутентификатор>>");
                     UserAuthenticator authenticator = new UserAuthenticator();
 
                     System.out.print("Enter username: ");
                     String username = scanner2.nextLine();
-
                     System.out.print("Enter password: ");
                     String password = scanner2.nextLine();
 

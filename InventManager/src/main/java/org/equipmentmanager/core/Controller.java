@@ -2,14 +2,14 @@ package org.equipmentmanager.core;
 
 import org.equipmentmanager.ui.MainMenu;
 
-public class Program {
+public class Controller {
     public void start() {
         //TODO запрашивать действие у UI-модуля
         // show main menu
         //основная логика приложения
 
-        MainMenu ui = new MainMenu();
-        ui.getUserInput();
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.getUserInput();
 
 
     }

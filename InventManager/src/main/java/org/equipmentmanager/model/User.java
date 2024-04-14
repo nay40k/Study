@@ -1,16 +1,16 @@
 package org.equipmentmanager.model;
+import lombok.*;
 
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     String userName;
     String password;
     boolean isAdmin;
 
-    public User(String userName, String password, boolean isAdmin) {
-        this.userName = userName;
-        this.password = password;
-        this.isAdmin = isAdmin;
-    }
 
     public String getUsername() {
         return userName;

@@ -1,13 +1,14 @@
 package org.equipmentmanager.model;
 
+import lombok.*;
+
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Office {
     String address;
     String department;
-
-    public Office(String address, String department) {
-        this.address = address;
-        this.department = department;
-    }
 
     public String getAddress() {
         return address;
