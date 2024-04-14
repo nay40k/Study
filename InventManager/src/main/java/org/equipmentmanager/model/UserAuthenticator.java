@@ -10,7 +10,6 @@ import lombok.*;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class UserAuthenticator {
     private Connection conn = DBConnector.connect();
 
@@ -22,16 +21,16 @@ public class UserAuthenticator {
         users.add(new User("admin", "admin123", true));
     }
 
-    public boolean authenticate(String username, String password) {
-        for (User users : this.users) {
-            if (users.getUsername().equals(username) && users.getPassword().equals(password)) {
-                return true;
+    public User authenticate(String username, String password) {
+        for (User user : this.users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return user;
             }
         }
-
-        return false;
+        return null; //бросать эксепшн
     }
 
+    //удалить и работать с полем экземпляра класса User
     public boolean adminRole(String username, String password) {
         for (User users : this.users) {
             if (users.getUsername().equals(username) && users.getPassword().equals(password) && users.getIfAdmin()) {
