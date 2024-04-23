@@ -16,5 +16,4 @@ public interface DAO<T> {
 
     void deleteById(String id);
 
-
 }

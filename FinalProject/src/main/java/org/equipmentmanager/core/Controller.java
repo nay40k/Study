@@ -1,8 +1,6 @@
 package org.equipmentmanager.core;
 
-import org.equipmentmanager.db.dao.DAO;
-import org.equipmentmanager.db.dao.EmployeeDAO;
-import org.equipmentmanager.db.dao.OfficeDAO;
+import org.equipmentmanager.db.dao.*;
 import org.equipmentmanager.model.Employee;
 import org.equipmentmanager.model.Office;
 import org.equipmentmanager.model.User;
@@ -16,6 +14,11 @@ public class Controller {
     public void start() {
         Menu currentMenu = MainMenu.getInstance();
         UserAuthenticator authenticator = new UserAuthenticator();
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        OfficeDAO officeDAO = new OfficeDAO();
+        OfficeEquipmentDAO officeEquipmentDAO = new OfficeEquipmentDAO();
+        UserDAO userDAO = new UserDAO();
+
 
         while (true) {
             int choice;
@@ -54,7 +57,12 @@ public class Controller {
                             currentMenu = UserMenu.getInstance();
                         }
                         continue;
-                    } else {
+                    } else if(accessLevel == 2 || accessLevel == 3){
+                        officeEquipmentDAO.getAll();
+
+                    }
+
+                    else {
                         System.out.println("Вы выбрали пункт 1");
                         break;
                     }
@@ -71,18 +79,20 @@ public class Controller {
                     System.out.println("Вы выбрали пункт 5");
                     break;
                 case 6:
-                    System.out.println("Вы выбрали пункт 6");
-                    OfficeDAO officeDAO = new OfficeDAO();
-                    List<Office> offices = officeDAO.getAll();
-                    for (Office office : offices) {
-                        System.out.println(office);
-                    }
+//                    System.out.println("Вы выбрали пункт 6");
+//                    OfficeDAO officeDAO = new OfficeDAO();
+//                    List<Office> offices = officeDAO.getAll();
+//                    for (Office office : offices) {
+//                        System.out.println(office);
+//                    }
+                    officeDAO.getAll().forEach(System.out::println); // TODO выводить через UI
                     break;
                 case 7:
                     if (accessLevel == 3) {
-                        String[] input = EntityNameBuilder.setOfficeParameters();
+//                        String[] input = EntityNameBuilder.setOfficeParameters();
                         //TODO object
-                        new OfficeDAO().add(new Office(input[0], input[1] ));
+//                        new OfficeDAO().add(new Office(input[0], input[1] ));
+                        officeDAO.add(new Office());
                         //TODO output approvement
 //                        EntityNameBuilder.pause();
 //
@@ -92,7 +102,6 @@ public class Controller {
                     break;
                 case 8:
 //                    System.out.println("Вы выбрали пункт 8");
-                    EmployeeDAO employeeDAO = new EmployeeDAO();
 
                     // Получаем список всех сотрудников
                     List<Employee> employees = employeeDAO.getAll();

@@ -12,7 +12,7 @@ public class UserDAO implements DAO<User> {
     @Override
     public void add(User user) {
         String sql = "INSERT INTO users (username, password, isAdmin) VALUES (?, ?, ?)";
-        try (Connection conn = DBConnector.getConnection();
+        try (Connection conn = DBConnector.getInstance().getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, user.getPassword());
@@ -26,7 +26,7 @@ public class UserDAO implements DAO<User> {
     @Override
     public User getById(String id) {
         String sql = "SELECT * FROM users WHERE id = ?";
-        try (Connection conn = DBConnector.getConnection();
+        try (Connection conn = DBConnector.getInstance().getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, Integer.parseInt(id));
             ResultSet rs = pstmt.executeQuery();
@@ -48,7 +48,7 @@ public class UserDAO implements DAO<User> {
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users";
-        try (Connection conn = DBConnector.getConnection();
+        try (Connection conn = DBConnector.getInstance().getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
@@ -83,7 +83,7 @@ public class UserDAO implements DAO<User> {
     @Override
     public void deleteById(String id) {
         String sql = "DELETE FROM users WHERE id = ?";
-        try (Connection conn = DBConnector.getConnection();
+        try (Connection conn = DBConnector.getInstance().getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, Integer.parseInt(id));
             pstmt.executeUpdate();
