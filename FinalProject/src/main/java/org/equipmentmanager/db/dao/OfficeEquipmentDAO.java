@@ -53,7 +53,14 @@ public class OfficeEquipmentDAO implements DAO<OfficeEquipment> {
     @Override
     public List<OfficeEquipment> getAll() {
         List<OfficeEquipment> equipmentList = new ArrayList<>();
-        String sql = "SELECT * FROM equipment";
+//        String sql = "SELECT * FROM equipment";
+        String sql = """
+                SELECT eq.id, eqt.type, eq.serialnumber, eq.cost, eqs.status, of.address, of.department, em.firstname, em.lastname
+                FROM employees em, equipment eq, offices of, equipmenttypes eqt, equipmentstatuses eqs
+                WHERE of.id = eq.location
+                AND em.id = eq.user
+                AND eqt.id = eq.type
+                AND eqs.id = eq.status;""";
         try (Connection conn = DBConnector.getInstance().getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -61,11 +68,13 @@ public class OfficeEquipmentDAO implements DAO<OfficeEquipment> {
                 equipmentList.add(new OfficeEquipment(
                         rs.getInt("id"),
                         rs.getString("type"),
-                        rs.getString("serialNumber"),
+                        rs.getString("serialnumber"),
                         rs.getDouble("cost"),
                         rs.getString("status"),
-                        rs.getString("user"),
-                        rs.getString("location")
+                        rs.getString("firstname"),
+                        rs.getString("lastname"),
+                        rs.getString("address"),
+                        rs.getString("department")
                 ));
             }
         } catch (SQLException e) {

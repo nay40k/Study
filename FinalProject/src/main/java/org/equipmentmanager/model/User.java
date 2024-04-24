@@ -38,6 +38,11 @@ public class User {
         this.password = password;
         this.isAdmin = isAdmin;
     }
+    public User(String username, String password, boolean isAdmin) {
+        this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
 
     @Override
     public String toString() {

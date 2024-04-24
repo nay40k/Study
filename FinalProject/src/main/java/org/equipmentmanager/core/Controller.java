@@ -1,10 +1,7 @@
 package org.equipmentmanager.core;
 
 import org.equipmentmanager.db.dao.*;
-import org.equipmentmanager.model.Employee;
-import org.equipmentmanager.model.Office;
-import org.equipmentmanager.model.User;
-import org.equipmentmanager.model.UserAuthenticator;
+import org.equipmentmanager.model.*;
 import org.equipmentmanager.ui.*;
 
 import java.util.List;
@@ -18,114 +15,128 @@ public class Controller {
         OfficeDAO officeDAO = new OfficeDAO();
         OfficeEquipmentDAO officeEquipmentDAO = new OfficeEquipmentDAO();
         UserDAO userDAO = new UserDAO();
+        IOHandler ioHandler = new IOHandler();
 
+        currentMenu.displayWelcomeMessage();
 
         while (true) {
             int choice;
-            int accessLevel = 0;
-
-            currentMenu.displayWelcomeMessage();
-            currentMenu.displayMenu();
-
-            if (currentMenu == MainMenu.getInstance()) {
-                accessLevel = 1;
-            } else if (currentMenu == UserMenu.getInstance()) {
-                accessLevel = 2;
-            } else if (currentMenu == AdminMenu.getInstance()) {
-                accessLevel = 3;
-            } else {
-                accessLevel = 99;
-            }
-
-
             try {
-                choice = Integer.parseInt(MainMenu.getInstance().getUserInput());
-            } catch (NumberFormatException e) {
-                System.out.println("Ошибка: введите целое число.");
-                continue; // продолжаем выполнение цикла
-            }
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } // невероятный блок кода чтобы сообщение об ошибке не смешивалось с выводом меню ¯\_(ツ)_/¯
+            currentMenu.displayMenu();
+            int accessLevel = ioHandler.setAccessLevel(currentMenu);
+
+            choice = Integer.parseInt(MainMenu.getInstance().getUserInput());
 
             switch (choice) {
                 case 1:
                     if (accessLevel == 1) {
                         String[] creds = currentMenu.getCredentials();
-                        User user = authenticator.authenticate(creds[0], creds[1]);
+                        User user = null;
+
+                        user = authenticator.authenticate(creds[0], creds[1]);
                         System.out.println(user); //временный вывод
-                        if (user.isAdmin()) {
+                        if (user != null && user.isAdmin()) {
                             currentMenu = AdminMenu.getInstance();
-                        } else {
+                            currentMenu.displayWelcomeMessage();
+                        } else if (user != null && !user.isAdmin()) {
                             currentMenu = UserMenu.getInstance();
+                            currentMenu.displayWelcomeMessage();
+                        } else {
+                            ioHandler.displayAuthFailMessage();
+                            continue;
                         }
                         continue;
-                    } else if(accessLevel == 2 || accessLevel == 3){
-                        officeEquipmentDAO.getAll();
-
-                    }
-
-                    else {
-                        System.out.println("Вы выбрали пункт 1");
+                    } else if (accessLevel == 2 || accessLevel == 3) {
+                        officeEquipmentDAO.getAll().forEach(System.out::println);
                         break;
+                    } else {
+                        ioHandler.displayInvalidChoiceMessage();
                     }
                 case 2:
-                    System.out.println("Вы выбрали пункт 2");
+                    if (accessLevel == 3) {
+
+                    } else {
+                        ioHandler.displayInvalidChoiceMessage();
+                    }
                     break;
                 case 3:
-                    System.out.println("Вы выбрали пункт 3");
+                    if (accessLevel == 3) {
+
+                    } else {
+                        ioHandler.displayInvalidChoiceMessage();
+                    }
                     break;
                 case 4:
-                    System.out.println("Вы выбрали пункт 4");
+                    if (accessLevel == 2 || accessLevel == 3) {
+
+                    } else {
+                        ioHandler.displayInvalidChoiceMessage();
+                    }
                     break;
                 case 5:
-                    System.out.println("Вы выбрали пункт 5");
+                    if (accessLevel == 3) {
+                        String[] s = ioHandler.setUserParameters();
+                        boolean a = false;
+                        if (s[2].equals("y")) {
+                            a = true;
+                        } else if (s[2].equals("n")) {
+                            a = false;
+                        }
+                        User user = new User(s[0], s[1], a);
+                        userDAO.add(user);
+                    } else {
+                        ioHandler.displayInvalidChoiceMessage();
+                    }
                     break;
                 case 6:
-//                    System.out.println("Вы выбрали пункт 6");
-//                    OfficeDAO officeDAO = new OfficeDAO();
-//                    List<Office> offices = officeDAO.getAll();
-//                    for (Office office : offices) {
-//                        System.out.println(office);
-//                    }
-                    officeDAO.getAll().forEach(System.out::println); // TODO выводить через UI
+                    if (accessLevel == 2 || accessLevel == 3) {
+                        officeDAO.getAll().forEach(System.out::println); // TODO выводить через UI
+                    } else {
+                        ioHandler.displayInvalidChoiceMessage();
+                    }
                     break;
                 case 7:
                     if (accessLevel == 3) {
-//                        String[] input = EntityNameBuilder.setOfficeParameters();
-                        //TODO object
-//                        new OfficeDAO().add(new Office(input[0], input[1] ));
-                        officeDAO.add(new Office());
-                        //TODO output approvement
-//                        EntityNameBuilder.pause();
-//
+                        String[] s = ioHandler.setOfficeParameters();
+                        Office office = new Office(s[0], s[1]);
+                        officeDAO.add(office);
+//                        satelliteUIClass.displayObjectAddedSuccessMessage(office);
                     } else {
-                        System.err.println("Invalid choice. Please try again.");
+                        ioHandler.displayInvalidChoiceMessage();
                     }
                     break;
                 case 8:
-//                    System.out.println("Вы выбрали пункт 8");
-
-                    // Получаем список всех сотрудников
-                    List<Employee> employees = employeeDAO.getAll();
-
-                    // Выводим информацию о каждом сотруднике
-                    for (Employee employee : employees) {
-                        System.out.println(employee);
+                    if (accessLevel == 2 || accessLevel == 3) {
+                        employeeDAO.getAll().forEach(System.out::println); // TODO выводить через UI
+                    } else {
+                        ioHandler.displayInvalidChoiceMessage();
                     }
                     break;
                 case 9:
-                    System.out.println("Вы выбрали пункт 9");
+                    if (accessLevel == 3) {
+
+                        Employee employee = new Employee("1", "2", "3");
+                        employeeDAO.add(employee);
+
+                    } else {
+                        ioHandler.displayInvalidChoiceMessage();
+                    }
                     break;
                 case 0:
-                    if (currentMenu == MainMenu.getInstance()) {
+                    if (accessLevel == 1) {
                         new MainMenu().exitApplication();
                         System.exit(0);
                     } else {
                         currentMenu = MainMenu.getInstance();
-                        continue;
+                        break;
                     }
                 default:
-
-                    System.err.println("Invalid choice. Please try again.");
-
+                    ioHandler.displayInvalidChoiceMessage();
+                    currentMenu.displayMenu();
             }
         }
 

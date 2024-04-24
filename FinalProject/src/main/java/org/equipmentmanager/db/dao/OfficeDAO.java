@@ -2,7 +2,6 @@ package org.equipmentmanager.db.dao;
 
 import org.equipmentmanager.db.dbmanager.DBConnector;
 import org.equipmentmanager.model.Office;
-import org.equipmentmanager.ui.EntityNameBuilder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,10 +15,10 @@ public class OfficeDAO implements DAO<Office> {
         String sql = "INSERT INTO offices (address, department) VALUES (?, ?)";
         try (Connection conn = DBConnector.getInstance().getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//            pstmt.setString(1, office.getAddress());
-            pstmt.setString(1, EntityNameBuilder.getEntityName());
-//            pstmt.setString(2, office.getDepartment());
-            pstmt.setString(2, EntityNameBuilder.getEntityName());
+            pstmt.setString(1, office.getAddress());
+//            pstmt.setString(1, SatelliteUIClass.getEntityName());
+            pstmt.setString(2, office.getDepartment());
+//            pstmt.setString(2, SatelliteUIClass.getEntityName());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
