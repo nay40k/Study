@@ -15,6 +15,14 @@ public class OfficeEquipment {
     private String address;
     private String department;
 
+    // конструктор для создания
+    public OfficeEquipment(String type, String serialNumber, double cost) {
+        this.type = type;
+        this.serialNumber = serialNumber;
+        this.cost = cost;
+    }
+
+    // конструктор для DAO get
     public OfficeEquipment(int id, String type, String serialNumber, double cost, String status, String firstname, String lastname, String address, String department) {
         this.id = id;
         this.type = type;
@@ -26,6 +34,7 @@ public class OfficeEquipment {
         this.address = address;
         this.department = department;
     }
+
 
     public OfficeEquipment(int id, String type, String serialNumber, double cost, String status, String user, String location) {
         this.id = id;
@@ -41,14 +50,14 @@ public class OfficeEquipment {
     public String toString() {
         return "[" +
                 "id=" + id +
-                ", type='" + type + '\'' +
-                ", serialNumber='" + serialNumber + '\'' +
-                ", cost=" + cost +
-                ", status='" + status + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", address='" + address + '\'' +
-                ", department='" + department + '\'' +
+                " | type='" + type + '\'' +
+                " | serialNumber='" + serialNumber + '\'' +
+                " | cost=" + cost +
+                " | status='" + status + '\'' +
+                " | firstname='" + firstname + '\'' +
+                " | lastname='" + lastname + '\'' +
+                " | address='" + address + '\'' +
+                " | department='" + department + '\'' +
                 ']';
     }
 

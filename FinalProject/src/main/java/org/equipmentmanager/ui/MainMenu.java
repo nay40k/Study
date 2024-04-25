@@ -1,11 +1,8 @@
 package org.equipmentmanager.ui;
 
 import org.equipmentmanager.util.ScannerSingleton;
-
-import java.util.Arrays;
-
-import static org.equipmentmanager.util.Constants.GenericMenuConstants.*;
 import static org.equipmentmanager.util.Constants.MainMenuConstants.*;
+import static org.equipmentmanager.util.Constants.SatelliteUIConstants.*;
 
 
 public class MainMenu implements Menu {
@@ -26,7 +23,7 @@ public class MainMenu implements Menu {
         int input;
         while (true) {
             try {
-                System.out.print(ENTER_CHOICE_MESSAGE);
+                System.out.println(ENTER_CHOICE_MESSAGE);
                 input = Integer.parseInt(ScannerSingleton.getInstance().nextLine());
                 break;
             } catch (IllegalStateException | NumberFormatException e) {
@@ -36,14 +33,7 @@ public class MainMenu implements Menu {
         return String.valueOf(input);
     }
 
-    @Override
-    public String[] getCredentials() {
-        System.out.print(USERNAME_PROMPT);
-        String username = ScannerSingleton.getInstance().nextLine();
-        System.out.print(PASSWORD_PROMPT);
-        String password = ScannerSingleton.getInstance().nextLine();
-        return new String[]{username, password};
-    }
+
 
     @Override
     public void displayWelcomeMessage() {
@@ -56,13 +46,5 @@ public class MainMenu implements Menu {
 
     }
 
-    @Override
-    public Menu processUserInputAndProceedToNextMenu(int input) {
 
-        return null;
-    }
-
-    public void exitApplication() {
-        System.out.println(EXIT_MESSAGE);
-    }
 }

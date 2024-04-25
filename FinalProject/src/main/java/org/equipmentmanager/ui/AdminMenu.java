@@ -1,10 +1,8 @@
 package org.equipmentmanager.ui;
 
 import org.equipmentmanager.util.ScannerSingleton;
-
-import static org.equipmentmanager.util.Constants.GenericMenuConstants.*;
 import static org.equipmentmanager.util.Constants.AdminMenuConstants.*;
-
+import static org.equipmentmanager.util.Constants.SatelliteUIConstants.*;
 
 
 public class AdminMenu implements Menu{
@@ -34,11 +32,6 @@ public class AdminMenu implements Menu{
         return String.valueOf(input);
     }
 
-    @Override
-    public String[] getCredentials() {
-        return new String[0];
-    }
-
 
     @Override
     public void displayMenu() {
@@ -51,15 +44,5 @@ public class AdminMenu implements Menu{
         System.out.println(WELCOME_MESSAGE);
     }
 
-    @Override
-    public Menu processUserInputAndProceedToNextMenu(int input) {
-        return null;
-    }
-
-//    @Override
-//    public String getUserInput() {
-//        System.out.print(ENTER_CHOICE_MESSAGE);
-//        return ScannerSingleton.getInstance().nextLine();
-//    }
 
 }

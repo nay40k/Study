@@ -50,12 +50,12 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "[" +
                 "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", position='" + position + '\'' +
-                '}';
+                " | firstName='" + firstName + '\'' +
+                " | lastName='" + lastName + '\'' +
+                " | position='" + position + '\'' +
+                ']';
     }
 }
 

@@ -11,15 +11,15 @@ public class OfficeEquipmentDAO implements DAO<OfficeEquipment> {
 
     @Override
     public void add(OfficeEquipment equipment) {
-        String sql = "INSERT INTO equipment (type, serialNumber, cost, status, user, location) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO equipment (type, serialNumber, cost, status, user, location) VALUES (?, ?, ?, 1, 1, 1)";
         try (Connection conn = DBConnector.getInstance().getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, equipment.getType());
             pstmt.setString(2, equipment.getSerialNumber());
             pstmt.setDouble(3, equipment.getCost());
-            pstmt.setString(4, equipment.getStatus());
-            pstmt.setString(5, equipment.getUser());
-            pstmt.setString(6, equipment.getLocation());
+//            pstmt.setString(4, equipment.getStatus());
+//            pstmt.setString(5, equipment.getUser());
+//            pstmt.setString(6, equipment.getLocation());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -28,16 +28,17 @@ public class OfficeEquipmentDAO implements DAO<OfficeEquipment> {
 
     @Override
     public OfficeEquipment getById(String id) {
-        String sql = "SELECT * FROM equipment WHERE id = ?";
+        String sql = "SELECT * FROM equipment WHERE id = ?;";
         try (Connection conn = DBConnector.getInstance().getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, Integer.parseInt(id));
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 return new OfficeEquipment(
+                        //TODO аналогично getAll
                         rs.getInt("id"),
                         rs.getString("type"),
-                        rs.getString("serialNumber"),
+                        rs.getString("serialnumber"),
                         rs.getDouble("cost"),
                         rs.getString("status"),
                         rs.getString("user"),
@@ -83,18 +84,33 @@ public class OfficeEquipmentDAO implements DAO<OfficeEquipment> {
         return equipmentList;
     }
 
+//    @Override
+//    public void update(OfficeEquipment equipment) {
+//        String sql = "UPDATE equipment SET type = ?, serialNumber = ?, cost = ?, status = ?, user = ?, location = ? WHERE id = ?";
+//        try (Connection conn = DBConnector.getInstance().getConnection();
+//             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+//            pstmt.setString(1, equipment.getType());
+//            pstmt.setString(2, equipment.getSerialNumber());
+//            pstmt.setDouble(3, equipment.getCost());
+//            pstmt.setString(4, equipment.getStatus());
+//            pstmt.setString(5, equipment.getUser());
+//            pstmt.setString(6, equipment.getLocation());
+//            pstmt.setInt(7, equipment.getId());
+//            pstmt.executeUpdate();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
+
     @Override
     public void update(OfficeEquipment equipment) {
-        String sql = "UPDATE equipment SET type = ?, serialNumber = ?, cost = ?, status = ?, user = ?, location = ? WHERE id = ?";
+//        String sql = "UPDATE equipment SET status = ?, user = ?, location = ? WHERE id = ?";
+        String sql = "UPDATE equipment SET status = 2, user = ?, location = ? WHERE id = ?";
         try (Connection conn = DBConnector.getInstance().getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, equipment.getType());
-            pstmt.setString(2, equipment.getSerialNumber());
-            pstmt.setDouble(3, equipment.getCost());
-            pstmt.setString(4, equipment.getStatus());
-            pstmt.setString(5, equipment.getUser());
-            pstmt.setString(6, equipment.getLocation());
-            pstmt.setInt(7, equipment.getId());
+            pstmt.setString(1, equipment.getUser());
+            pstmt.setString(2, equipment.getLocation());
+            pstmt.setInt(3, equipment.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -112,4 +128,22 @@ public class OfficeEquipmentDAO implements DAO<OfficeEquipment> {
             System.out.println(e.getMessage());
         }
     }
+
+    public List<String[]> getEqTypes() {
+        List<String[]> equipmentTypes = new ArrayList<>();
+        String sql = "SELECT * FROM equipmenttypes;";
+        try (Connection conn = DBConnector.getInstance().getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                String id = String.valueOf(rs.getInt("id"));
+                String type = rs.getString("type");
+                equipmentTypes.add(new String[]{id, type});
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return equipmentTypes;
+    }
+
 }

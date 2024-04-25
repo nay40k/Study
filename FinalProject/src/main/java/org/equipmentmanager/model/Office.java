@@ -2,9 +2,9 @@ package org.equipmentmanager.model;
 
 
 public class Office {
-    int id;
-    String address;
-    String department;
+    private int id;
+    private String address;
+    private String department;
 
     public Office(String address, String department) {
         this.address = address;
@@ -46,10 +46,10 @@ public class Office {
 
     @Override
     public String toString() {
-        return "Office{" +
+        return "[" +
                 "id=" + id +
-                ", address='" + address + '\'' +
-                ", department='" + department + '\'' +
-                '}';
+                " | address='" + address + '\'' +
+                " | department='" + department + '\'' +
+                ']';
     }
 }

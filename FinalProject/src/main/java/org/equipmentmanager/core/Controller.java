@@ -29,15 +29,13 @@ public class Controller {
             currentMenu.displayMenu();
             int accessLevel = ioHandler.setAccessLevel(currentMenu);
 
-            choice = Integer.parseInt(MainMenu.getInstance().getUserInput());
+            choice = Integer.parseInt(currentMenu.getUserInput());
 
             switch (choice) {
                 case 1:
                     if (accessLevel == 1) {
-                        String[] creds = currentMenu.getCredentials();
-                        User user = null;
-
-                        user = authenticator.authenticate(creds[0], creds[1]);
+                        String[] creds = ioHandler.getCredentials();
+                        User user = authenticator.authenticate(creds[0], creds[1]);
                         System.out.println(user); //временный вывод
                         if (user != null && user.isAdmin()) {
                             currentMenu = AdminMenu.getInstance();
@@ -51,28 +49,39 @@ public class Controller {
                         }
                         continue;
                     } else if (accessLevel == 2 || accessLevel == 3) {
-                        officeEquipmentDAO.getAll().forEach(System.out::println);
+                        ioHandler.printOfficeEquip(officeEquipmentDAO.getAll());
+//                        officeEquipmentDAO.getAll().forEach(System.out::println);
                         break;
                     } else {
                         ioHandler.displayInvalidChoiceMessage();
                     }
                 case 2:
                     if (accessLevel == 3) {
-
+                        ioHandler.printList(officeEquipmentDAO.getEqTypes());
+                        String[] s = ioHandler.setEquipParameters();
+                        OfficeEquipment equipment = new OfficeEquipment(s[0], s[1], Double.parseDouble(s[2]));
+                        officeEquipmentDAO.add(equipment);
                     } else {
                         ioHandler.displayInvalidChoiceMessage();
                     }
                     break;
                 case 3:
                     if (accessLevel == 3) {
-
+                        List<OfficeEquipment> equips = officeEquipmentDAO.getAll();
+                        List<Office> offices = officeDAO.getAll();
+                        List<Employee> employees = employeeDAO.getAll();
+                        String[] smd = ioHandler.setMovementDetails(equips, offices, employees);
+                        OfficeEquipment equipment = officeEquipmentDAO.getById(smd[0]);
+                        equipment.setLocation(smd[1]);
+                        equipment.setUser(smd[2]);
+                        officeEquipmentDAO.update(equipment);
                     } else {
                         ioHandler.displayInvalidChoiceMessage();
                     }
                     break;
                 case 4:
                     if (accessLevel == 2 || accessLevel == 3) {
-
+                        ioHandler.printUsers(userDAO.getAll());
                     } else {
                         ioHandler.displayInvalidChoiceMessage();
                     }
@@ -94,7 +103,7 @@ public class Controller {
                     break;
                 case 6:
                     if (accessLevel == 2 || accessLevel == 3) {
-                        officeDAO.getAll().forEach(System.out::println); // TODO выводить через UI
+                        ioHandler.printOffices(officeDAO.getAll());
                     } else {
                         ioHandler.displayInvalidChoiceMessage();
                     }
@@ -128,7 +137,7 @@ public class Controller {
                     break;
                 case 0:
                     if (accessLevel == 1) {
-                        new MainMenu().exitApplication();
+                        ioHandler.exitApplication();
                         System.exit(0);
                     } else {
                         currentMenu = MainMenu.getInstance();
@@ -136,7 +145,6 @@ public class Controller {
                     }
                 default:
                     ioHandler.displayInvalidChoiceMessage();
-                    currentMenu.displayMenu();
             }
         }
 

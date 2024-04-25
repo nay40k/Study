@@ -3,10 +3,10 @@ package org.equipmentmanager.model;
 
 public class User {
 
-    int id;
-    String username;
-    String password;
-    boolean isAdmin;
+    private int id;
+    private String username;
+    private String password;
+    private boolean isAdmin;
 
     public String getUserName() {
         return username;

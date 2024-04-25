@@ -3,6 +3,44 @@ package org.equipmentmanager.db.dbmanager;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+
+public class DBConnector {
+    private static final String URL = "jdbc:sqlite:test.db";
+    private static DBConnector INSTANCE;
+    private Connection conn;
+
+    private DBConnector() {
+        connect();
+    }
+
+    private void connect() {
+        try {
+            conn = DriverManager.getConnection(URL);
+//            System.out.println("Соединение с базой данных успешно установлено.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static DBConnector getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new DBConnector();
+        } else {
+            try {
+                if (INSTANCE.conn == null || INSTANCE.conn.isClosed()) {
+                    INSTANCE.connect();
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return INSTANCE;
+    }
+
+    public Connection getConnection() throws SQLException{
+        return conn;
+    }
 //
 //public class DBConnector {
 //
@@ -11,7 +49,6 @@ import java.sql.SQLException;
 //    public static Connection getConnection() {
 //        Connection conn = null;
 //        try {
-//            // Попытка установить соединение с базой данных
 //            conn = DriverManager.getConnection(URL);
 //            System.out.println("Соединение с базой данных успешно установлено.");
 //        } catch (SQLException e) {
@@ -28,10 +65,8 @@ import java.sql.SQLException;
 //    private static DBConnector INSTANCE;
 //    private Connection conn;
 //
-//    // Приватный конструктор
 //    private DBConnector() {
 //        try {
-//            // Попытка установить соединение с базой данных
 //            conn = DriverManager.getConnection(URL);
 //            System.out.println("Соединение с базой данных успешно установлено.");
 //        } catch (SQLException e) {
@@ -39,7 +74,6 @@ import java.sql.SQLException;
 //        }
 //    }
 //
-//    // Публичный метод для получения экземпляра
 //    public static DBConnector getInstance() {
 //        if (INSTANCE == null) {
 //            INSTANCE = new DBConnector();
@@ -47,52 +81,9 @@ import java.sql.SQLException;
 //        return INSTANCE;
 //    }
 //
-//    // Метод для получения соединения
 //    public Connection getConnection() {
 //        return conn;
 //    }
 //}
 
-
-public class DBConnector {
-    private static final String URL = "jdbc:sqlite:test.db";
-    private static DBConnector INSTANCE;
-    private Connection conn;
-
-    // Приватный конструктор
-    private DBConnector() {
-        connect();
-    }
-
-    // Метод для установления соединения с базой данных
-    private void connect() {
-        try {
-            conn = DriverManager.getConnection(URL);
-//            System.out.println("Соединение с базой данных успешно установлено.");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    // Публичный метод для получения экземпляра
-    public static DBConnector getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new DBConnector();
-        } else {
-            try {
-                // Проверяем, закрыто ли соединение, и восстанавливаем его при необходимости
-                if (INSTANCE.conn == null || INSTANCE.conn.isClosed()) {
-                    INSTANCE.connect();
-                }
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        return INSTANCE;
-    }
-
-    // Метод для получения соединения
-    public Connection getConnection() throws SQLException{
-        return conn;
-    }
 }

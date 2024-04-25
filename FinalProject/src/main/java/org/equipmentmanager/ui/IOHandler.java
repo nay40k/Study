@@ -1,15 +1,39 @@
 package org.equipmentmanager.ui;
 
+import org.equipmentmanager.model.Employee;
+import org.equipmentmanager.model.Office;
+import org.equipmentmanager.model.OfficeEquipment;
+import org.equipmentmanager.model.User;
 import org.equipmentmanager.util.ScannerSingleton;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.equipmentmanager.util.Constants.SatelliteUIConstants.*;
 
 public class IOHandler {
 
-//    public static void pause() {
-//        Scanner s = ScannerSingleton.getInstance();
-//        s.next();
-//    }
+    public String[] getCredentials() {
+        System.out.print(USERNAME_PROMPT);
+        String username = ScannerSingleton.getInstance().nextLine();
+        System.out.print(PASSWORD_PROMPT);
+        String password = ScannerSingleton.getInstance().nextLine();
+        return new String[]{username, password};
+    }
+
+    public String getUserInput() {
+        int input;
+        while (true) {
+            try {
+                System.out.print(ENTER_CHOICE_MESSAGE);
+                input = Integer.parseInt(ScannerSingleton.getInstance().nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println(INVALID_CHOICE_MESSAGE);
+            }
+        }
+        return String.valueOf(input);
+    }
 
     public void displayDBConnIsEstablished() {
 
@@ -24,7 +48,7 @@ public class IOHandler {
         } else if (currentMenu == AdminMenu.getInstance()) {
             accessLevel = 3;
         } else {
-            accessLevel = 99;
+            accessLevel = 0;
         }
         return accessLevel;
     }
@@ -33,12 +57,13 @@ public class IOHandler {
         System.err.println(AUTHENTICATION_FAILED);
     }
 
-    public void displayObjectAddedSuccessMessage(Object t) {
-        System.out.println("Object\n" + t + "\nadded successfully");
-    }
-
     public void displayInvalidChoiceMessage() {
         System.err.println(INVALID_CHOICE_MESSAGE);
+    }
+
+
+    public void displayObjectAddedSuccessMessage(Object t) {
+        System.out.println("Object\n" + t + "\nadded successfully");
     }
 
     public void displayObjectRemovedSuccessMessage(Object t) {
@@ -47,7 +72,7 @@ public class IOHandler {
 
 
     public String[] setOfficeParameters() {
-        String sop[] = new String[2];
+        String[] sop = new String[2];
         System.out.print(ENTER_OFFICE_ADDRESS);
         sop[0] = ScannerSingleton.getInstance().nextLine();
         System.out.print(ENTER_OFFICE_DEPARTMENT);
@@ -56,7 +81,7 @@ public class IOHandler {
     }
 
     public String[] setUserParameters() {
-        String sup[] = new String[3];
+        String[] sup = new String[3];
         System.out.print(ENTER_USERNAME);
         sup[0] = ScannerSingleton.getInstance().nextLine();
         System.out.print(ENTER_PASSWORD);
@@ -66,16 +91,57 @@ public class IOHandler {
         return sup;
     }
 
-    public String getEntityName() {
-        String input;
-
-        while (true) {
-
-                System.out.print("Enter entity test: ");
-                input = ScannerSingleton.getInstance().nextLine();
-                break;
-
-        }
-        return input;
+    public void printList(List<String[]> list) {
+        list.stream()
+                .map(Arrays::toString)
+                .forEach(System.out::println);
     }
+
+    public void printOfficeEquip(List<OfficeEquipment> officeEquipments) {
+        officeEquipments.forEach(System.out::println);
+    }
+
+    public void printOffices(List<Office> offices) {
+        offices.forEach(System.out::println);
+    }
+
+    public void printEmployees(List<Employee> employees) {
+        employees.forEach(System.out::println);
+    }
+
+    public void printUsers(List<User> users) {
+        users.forEach(System.out::println);
+    }
+
+    public String[] setMovementDetails(List<OfficeEquipment> equipments, List<Office> offices, List<Employee> employees) {
+        String[] details = new String[3];
+        printOfficeEquip(equipments);
+        System.out.print(ENTER_EQUIP_ID);
+        details[0] = getUserInput();
+        printOffices(offices);
+        System.out.print(ENTER_OFFICE_ID);
+        details[1] = getUserInput();
+        printEmployees(employees);
+        System.out.print(ENTER_USER_ID);
+        details[2] = getUserInput();
+        return details;
+    }
+
+    public String[] setEquipParameters() {
+        String[] sep = new String[3];
+        System.out.print(ENTER_TYPE_ID);
+//        sep[0] = ScannerSingleton.getInstance().nextLine();
+        sep[0] = new IOHandler().getUserInput();
+        System.out.print(ENTER_SERIAL_NUMBER);
+        sep[1] = ScannerSingleton.getInstance().nextLine();
+        System.out.print(ENTER_COST);
+        sep[2] = ScannerSingleton.getInstance().nextLine();
+        return sep;
+    }
+
+    public void exitApplication() {
+        System.out.println(EXIT_MESSAGE);
+    }
+
+
 }

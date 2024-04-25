@@ -3,7 +3,7 @@ package org.equipmentmanager.ui;
 
 import org.equipmentmanager.util.ScannerSingleton;
 
-import static org.equipmentmanager.util.Constants.GenericMenuConstants.*;
+import static org.equipmentmanager.util.Constants.SatelliteUIConstants.*;
 import static org.equipmentmanager.util.Constants.UserMenuConstants.*;
 
 public class UserMenu implements Menu{
@@ -33,10 +33,6 @@ public class UserMenu implements Menu{
         return String.valueOf(input);
     }
 
-    @Override
-    public String[] getCredentials() {
-        return new String[0];
-    }
 
 
     @Override
@@ -49,12 +45,4 @@ public class UserMenu implements Menu{
         System.out.println(MENU_OPTIONS);
     }
 
-    @Override
-    public Menu processUserInputAndProceedToNextMenu(int input) {
-        return null;
-    }
-
-
-
-    //TODO реализовать меню через общий интерфейс, переписать названия методов на одинаковые
 }
