@@ -114,7 +114,7 @@ public class IOHandler {
     }
 
     public String[] setMovementDetails(List<OfficeEquipment> equipments, List<Office> offices, List<Employee> employees) {
-        String[] details = new String[3];
+        String[] details = new String[6];
         printOfficeEquip(equipments);
         System.out.print(ENTER_EQUIP_ID);
         details[0] = getUserInput();
@@ -124,18 +124,32 @@ public class IOHandler {
         printEmployees(employees);
         System.out.print(ENTER_USER_ID);
         details[2] = getUserInput();
+        details[3] = "2"; // тут конечно тоже надо просить ввод, но как есть
         return details;
     }
 
     public String[] setEquipParameters() {
-        String[] sep = new String[3];
+        String[] sep = new String[6];
         System.out.print(ENTER_TYPE_ID);
 //        sep[0] = ScannerSingleton.getInstance().nextLine();
         sep[0] = new IOHandler().getUserInput();
         System.out.print(ENTER_SERIAL_NUMBER);
         sep[1] = ScannerSingleton.getInstance().nextLine();
         System.out.print(ENTER_COST);
-        sep[2] = ScannerSingleton.getInstance().nextLine();
+        double d;
+        while (true) {
+            try {
+                d = Double.parseDouble(ScannerSingleton.getInstance().nextLine());
+                break;
+            } catch (IllegalStateException | NumberFormatException e) {
+                System.err.println(INVALID_CHOICE_MESSAGE);
+            }
+        }
+        sep[2] = String.valueOf(d);
+        sep[3] = "1";;
+        sep[4] = "1";;
+        sep[5] = "1";;
+
         return sep;
     }
 

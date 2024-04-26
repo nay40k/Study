@@ -6,7 +6,7 @@ public class OfficeEquipment {
     private int id;
     private String type;
     private String serialNumber;
-    private double cost;
+    private String cost;
     private String status;
     private String user;
     private String firstname;
@@ -16,14 +16,14 @@ public class OfficeEquipment {
     private String department;
 
     // конструктор для создания
-    public OfficeEquipment(String type, String serialNumber, double cost) {
-        this.type = type;
-        this.serialNumber = serialNumber;
-        this.cost = cost;
-    }
+//    public OfficeEquipment(String type, String serialNumber, String cost) {
+//        this.type = type;
+//        this.serialNumber = serialNumber;
+//        this.cost = cost;
+//    }
 
     // конструктор для DAO get
-    public OfficeEquipment(int id, String type, String serialNumber, double cost, String status, String firstname, String lastname, String address, String department) {
+    public OfficeEquipment(int id, String type, String serialNumber, String cost, String status, String firstname, String lastname, String address, String department) {
         this.id = id;
         this.type = type;
         this.serialNumber = serialNumber;
@@ -36,7 +36,7 @@ public class OfficeEquipment {
     }
 
 
-    public OfficeEquipment(int id, String type, String serialNumber, double cost, String status, String user, String location) {
+    public OfficeEquipment(int id, String type, String serialNumber, String cost, String status, String user, String location) {
         this.id = id;
         this.type = type;
         this.serialNumber = serialNumber;
@@ -45,6 +45,18 @@ public class OfficeEquipment {
         this.user = user;
         this.location = location;
     }
+
+
+    public OfficeEquipment(String type, String serialNumber, String cost, String status, String user, String location) {
+        this.type = type;
+        this.serialNumber = serialNumber;
+        this.cost = cost;
+        this.status = status;
+        this.user = user;
+        this.location = location;
+    }
+
+
 
     @Override
     public String toString() {
@@ -101,11 +113,11 @@ public class OfficeEquipment {
         this.serialNumber = serialNumber;
     }
 
-    public double getCost() {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 

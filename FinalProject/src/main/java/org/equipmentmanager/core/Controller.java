@@ -59,7 +59,8 @@ public class Controller {
                     if (accessLevel == 3) {
                         ioHandler.printList(officeEquipmentDAO.getEqTypes());
                         String[] s = ioHandler.setEquipParameters();
-                        OfficeEquipment equipment = new OfficeEquipment(s[0], s[1], Double.parseDouble(s[2]));
+                        OfficeEquipment equipment = new OfficeEquipment(s[0], s[1], s[2], s[3], s[4], s[5])
+                        ;
                         officeEquipmentDAO.add(equipment);
                     } else {
                         ioHandler.displayInvalidChoiceMessage();
@@ -74,6 +75,7 @@ public class Controller {
                         OfficeEquipment equipment = officeEquipmentDAO.getById(smd[0]);
                         equipment.setLocation(smd[1]);
                         equipment.setUser(smd[2]);
+                        equipment.setStatus(smd[3]);
                         officeEquipmentDAO.update(equipment);
                     } else {
                         ioHandler.displayInvalidChoiceMessage();
