@@ -4,41 +4,109 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="48a72f90-a018-45a9-b464-626e4b0ad6f6" name="Changes" comment="gitignore" />
+    <list default="true" id="48a72f90-a018-45a9-b464-626e4b0ad6f6" name="Changes" comment="gitignore">
+      <change afterPath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/ui/GenericMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/util/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/util/ScannerSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/core/Program.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/model/UserAuthenticator.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/service/UserAuthenticatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/ui/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/ui/AdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/ui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/ui/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/ui/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/ui/UserMenu.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="study" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "nex125"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:nay40k/study.git",
+    "accountId": "2a85a35c-a8f6-4944-8d82-f6ac033306ae"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2bd3l14VMqGoVjB8TbHr5aXXaF4" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Application.executor": "Debug",
     "Application.Main.executor": "Run",
     "Java Scratch.Unnamed.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "study",
+    "git-widget-placeholder": "review",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/git/study/study",
-    "project.structure.last.edited": "Project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.equipmentmanager.Application" />
+      <module name="InventManager" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.equipmentmanager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Application" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -50,6 +118,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706531276135</updated>
+      <workItem from="1713006872760" duration="6245000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore">
       <option name="closed" value="true" />
@@ -61,6 +130,9 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -76,5 +148,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitignore" />
     <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/InventManager/src/main/java/org/equipmentmanager/ui/MainMenu.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
